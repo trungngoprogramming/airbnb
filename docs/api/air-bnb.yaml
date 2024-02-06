@@ -1,0 +1,213 @@
+openapi: 3.0.0
+paths:
+  /api/auth/signup:
+    post:
+      operationId: AuthController_register
+      summary: API đăng ký tài khoản
+      description: API đăng ký tài khoản
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignUpReqDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignUpResDto'
+        '400':
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      properties:
+                        resource:
+                          type: string
+                        code:
+                          type: string
+                        message:
+                          type: string
+              examples:
+                'E1000: (name) Không được để trống':
+                  value:
+                    errors:
+                      - resource: SignUpReqDto
+                        field: name
+                        code: E1000
+                        message: Không được để trống
+                'E1000: (email) Không được để trống':
+                  value:
+                    errors:
+                      - resource: SignUpReqDto
+                        field: email
+                        code: E1000
+                        message: Không được để trống
+                'E1000: (password) Không được để trống':
+                  value:
+                    errors:
+                      - resource: SignUpReqDto
+                        field: password
+                        code: E1000
+                        message: Không được để trống
+                'E1000: (phone) Không được để trống':
+                  value:
+                    errors:
+                      - resource: SignUpReqDto
+                        field: phone
+                        code: E1000
+                        message: Không được để trống
+                'E1001: (phone) Giá trị không vượt quá {value}':
+                  value:
+                    errors:
+                      - resource: SignUpReqDto
+                        field: phone
+                        code: E1001
+                        message: Giá trị không vượt quá {value}
+                'E1000: (birthday) Không được để trống':
+                  value:
+                    errors:
+                      - resource: SignUpReqDto
+                        field: birthday
+                        code: E1000
+                        message: Không được để trống
+                'E1000: (gender) Không được để trống':
+                  value:
+                    errors:
+                      - resource: SignUpReqDto
+                        field: gender
+                        code: E1000
+                        message: Không được để trống
+                'E1001: (gender) Giá trị không vượt quá {value}':
+                  value:
+                    errors:
+                      - resource: SignUpReqDto
+                        field: gender
+                        code: E1001
+                        message: Giá trị không vượt quá {value}
+                'E1000: (role) Không được để trống':
+                  value:
+                    errors:
+                      - resource: SignUpReqDto
+                        field: role
+                        code: E1000
+                        message: Không được để trống
+                'E1001: (role) Giá trị không vượt quá {value}':
+                  value:
+                    errors:
+                      - resource: SignUpReqDto
+                        field: role
+                        code: E1001
+                        message: Giá trị không vượt quá {value}
+                'E2000: Tài khoản đã tồn tại':
+                  value:
+                    errors:
+                      - code: E2000
+                        message: Tài khoản đã tồn tại
+        '500':
+          description: 'Error: Internal Server'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorTypeDto'
+      tags:
+        - auth
+info:
+  title: Air bnb
+  description: Air bnb docs
+  version: '0.1'
+  contact: {}
+tags: []
+servers: []
+components:
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http
+  schemas:
+    SignUpReqDto:
+      type: object
+      properties:
+        name:
+          type: string
+          example: name
+        email:
+          type: string
+          example: email@example.com
+        password:
+          type: string
+          example: password
+        phone:
+          type: string
+          example: '0354030301'
+        birthday:
+          format: date-time
+          type: string
+          example: 2024-02-06T17:55:12.336Z
+        gender:
+          type: string
+          example: gender
+        role:
+          type: string
+          example: role
+      required:
+        - name
+        - email
+        - password
+        - phone
+        - birthday
+        - gender
+        - role
+    SignUpResDto:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 1
+        email:
+          type: number
+          example: example@email.com
+        password:
+          type: string
+          example: password
+        phone:
+          type: string
+          example: '0354030301'
+        birthday:
+          type: string
+          example: 2024-02-06T17:55:12.357Z
+        gender:
+          type: string
+          example: Male
+        role:
+          type: string
+          example: editor
+      required:
+        - id
+        - email
+        - password
+        - phone
+        - birthday
+        - gender
+        - role
+    InternalServerErrorTypeDto:
+      type: object
+      properties:
+        code:
+          type: number
+          example: 500
+        message:
+          type: string
+          example: Lỗi máy chủ
+      required:
+        - code
+        - message
