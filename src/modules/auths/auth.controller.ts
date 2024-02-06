@@ -6,6 +6,8 @@ import { SignUpReqDto } from "./dtos/sign-up-req.dto";
 import { AuthService } from "./auth.service";
 import { SignUpResDto } from "./dtos/sign-up-res.dto";
 import { plainToInstance } from "class-transformer";
+import { SignInResDto } from "./dtos/sign-in-res.dto";
+import { SignInReqDto } from "./dtos/sign-in-req.dto";
 
 @ApiTags('auth')
 @Controller('auth')
@@ -23,11 +25,29 @@ export class AuthController {
     badRequestTarget: [SignUpReqDto],
     badRequestFromService: [Errors.Common.accountExisted],
   })
-  async register(
-    @Body() registerReqDto: SignUpReqDto,
+  async signup(
+    @Body() signupReqDto: SignUpReqDto,
   ): Promise<SignUpResDto> {
-    const nguoiDung = await this.authService.signup(registerReqDto);
+    const nguoiDung = await this.authService.signup(signupReqDto);
 
     return plainToInstance(SignUpResDto, nguoiDung);
+  }
+
+  @Post('signin')
+  @ApiOperation({
+    summary: 'API đăng nhập tài khoản',
+    description: 'API đăng nhập tài khoản',
+  })
+  @ApiCreatedResponse({ type: SignInResDto })
+  @ApiErrorDocs({
+    exclude: ['notFound', 'unauthorized', 'forbidden'],
+    badRequestTarget: [SignInReqDto],
+  })
+  async signin(
+    @Body() signinReqDto: SignInReqDto,
+  ): Promise<SignInResDto> {
+    const nguoiDung = await this.authService.signin(signinReqDto);
+
+    return plainToInstance(SignInResDto, nguoiDung);
   }
 }
