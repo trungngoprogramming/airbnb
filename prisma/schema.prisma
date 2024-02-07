@@ -18,6 +18,7 @@ model NguoiDung {
   phone    String   @map("phone") @db.VarChar(15)
   gender   String   @map("gender") @db.VarChar(20)
   role     String   @map("role") @db.VarChar(20)
+  hinhAnh  String?  @map("hinh_anh") @db.Text
   birthday DateTime @map("birth_day")
 
   createdAt DateTime @default(now()) @map("created_at")

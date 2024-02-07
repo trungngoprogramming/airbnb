@@ -12,19 +12,27 @@ export const Errors = {
     },
     maxLength: {
       code: 'E1001',
-      message: 'Giá trị không vượt quá độ dài {value}',
+      message: 'Giá trị không vượt quá độ dài {valueNumber}',
     },
     min: {
       code: 'E1002',
-      message: 'Giá trị phải lớn hơn hoặc bằng {value}'
+      message: 'Giá trị phải lớn hơn hoặc bằng {valueNumber}'
     },
     max: {
       code: 'E1003',
-      message: 'Giá trị phải nhỏ hơn hoặc bằng {value}',
+      message: 'Giá trị phải nhỏ hơn hoặc bằng {valueNumber}',
     },
     isNumber: {
       code: 'E1004',
       message: 'Giá trị phải là kiểu số'
+    },
+    isIn: {
+      code: 'E1005',
+      message: 'Giá trị phải thuộc 1 trong các giá trị sau:{valueIn}'
+    },
+    isBoolean: {
+      code: 'E1006',
+      message: 'Giá trị phải là kiểu boolean'
     },
     accountExisted: {
       code: 'E2000',

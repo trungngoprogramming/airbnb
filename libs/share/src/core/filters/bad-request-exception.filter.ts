@@ -25,15 +25,22 @@ const validationError = (error: ValidationError) => {
   const errName: string = first(Object.keys(errorObject.constraints));
   let code: string = Errors.Common[errName]?.code;
   const errMsg: string = first(Object.values(errorObject.constraints));
-  const regexValue = errMsg.match(/\d+/);
+  const regexValueNumber = errMsg.match(/\d+/);
+  const regexValueIn = errMsg.slice(errMsg.indexOf(":") + 1);
   let message: string = code
     ? Errors.Common[errName].message
     : undefined;
 
   message = replace(
     message,
-    /{value}/,
-    regexValue && regexValue[0],
+    /{valueNumber}/,
+    regexValueNumber && regexValueNumber[0],
+  );
+
+  message = replace(
+    message,
+    /{valueIn}/,
+    regexValueIn,
   );
 
   return {

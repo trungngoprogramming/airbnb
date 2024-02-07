@@ -64,9 +64,9 @@ export class ViTriController {
   async list(
     @Query() params: ListViTriReqDto,
   ): Promise<ListViTriResDto> {
-    const listViTri = await this.viTriService.list(params);
+    const result = await this.viTriService.list(params);
 
-    return plainToInstance(ListViTriResDto, listViTri);
+    return plainToInstance(ListViTriResDto, result);
   }
 
   @Get(':id')
@@ -81,9 +81,9 @@ export class ViTriController {
     badRequestTarget: [DetailViTriReqDto]
   })
   async detail(@Query() params: DetailViTriReqDto): Promise<DetailViTriResDto> {
-    const viTri = await this.viTriService.detail(params.id);
+    const result = await this.viTriService.detail(params.id);
 
-    return plainToInstance(DetailViTriResDto, viTri);
+    return plainToInstance(DetailViTriResDto, result);
   }
 
   @Put(':id')
@@ -107,9 +107,9 @@ export class ViTriController {
     @UploadedFile(ImgValidationPipe) hinhAnh: string,
   ): Promise<UpdateViTriResDto> {
     updateViTriReqDto.hinhAnh = hinhAnh;
-    const viTri = await this.viTriService.update(params.id, updateViTriReqDto);
+    const result = await this.viTriService.update(params.id, updateViTriReqDto);
 
-    return plainToInstance(UpdateViTriReqDto, viTri);
+    return plainToInstance(UpdateViTriReqDto, result);
   }
 
   @Put(':id/upload-hinh-anh')
@@ -131,11 +131,11 @@ export class ViTriController {
     @Query() params: DetailViTriReqDto,
     @Body() uploadViTriHinhAnhResDto: UploadViTriHinhAnhReqDto,
     @UploadedFile(ImgValidationPipe) hinhAnh: string
-  ) {
+  ): Promise<UploadViTriHinhAnhResDto> {
     uploadViTriHinhAnhResDto.hinhAnh = hinhAnh;
-    const viTri = await this.viTriService.updateImg(params.id, uploadViTriHinhAnhResDto);
+    const result = await this.viTriService.updateImg(params.id, uploadViTriHinhAnhResDto);
 
-    return plainToInstance(UploadViTriHinhAnhResDto, viTri);
+    return plainToInstance(UploadViTriHinhAnhResDto, result);
   }
 
   @Delete(':id')

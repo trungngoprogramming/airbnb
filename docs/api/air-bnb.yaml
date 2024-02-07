@@ -65,13 +65,13 @@ paths:
                         field: phone
                         code: E1000
                         message: Không được để trống
-                'E1001: (phone) Giá trị không vượt quá độ dài {value}':
+                'E1001: (phone) Giá trị không vượt quá độ dài {valueNumber}':
                   value:
                     errors:
                       - resource: SignUpReqDto
                         field: phone
                         code: E1001
-                        message: Giá trị không vượt quá độ dài {value}
+                        message: Giá trị không vượt quá độ dài {valueNumber}
                 'E1000: (birthday) Không được để trống':
                   value:
                     errors:
@@ -86,13 +86,13 @@ paths:
                         field: gender
                         code: E1000
                         message: Không được để trống
-                'E1001: (gender) Giá trị không vượt quá độ dài {value}':
+                'E1001: (gender) Giá trị không vượt quá độ dài {valueNumber}':
                   value:
                     errors:
                       - resource: SignUpReqDto
                         field: gender
                         code: E1001
-                        message: Giá trị không vượt quá độ dài {value}
+                        message: Giá trị không vượt quá độ dài {valueNumber}
                 'E2000: Tài khoản đã tồn tại':
                   value:
                     errors:
@@ -311,20 +311,20 @@ paths:
                         field: page
                         code: E1004
                         message: Giá trị phải là kiểu số
-                'E1003: (page) Giá trị phải nhỏ hơn hoặc bằng {value}':
+                'E1003: (page) Giá trị phải nhỏ hơn hoặc bằng {valueNumber}':
                   value:
                     errors:
                       - resource: PageReqDto
                         field: page
                         code: E1003
-                        message: Giá trị phải nhỏ hơn hoặc bằng {value}
-                'E1002: (page) Giá trị phải lớn hơn hoặc bằng {value}':
+                        message: Giá trị phải nhỏ hơn hoặc bằng {valueNumber}
+                'E1002: (page) Giá trị phải lớn hơn hoặc bằng {valueNumber}':
                   value:
                     errors:
                       - resource: PageReqDto
                         field: page
                         code: E1002
-                        message: Giá trị phải lớn hơn hoặc bằng {value}
+                        message: Giá trị phải lớn hơn hoặc bằng {valueNumber}
                 'E1004: (take) Giá trị phải là kiểu số':
                   value:
                     errors:
@@ -332,20 +332,20 @@ paths:
                         field: take
                         code: E1004
                         message: Giá trị phải là kiểu số
-                'E1003: (take) Giá trị phải nhỏ hơn hoặc bằng {value}':
+                'E1003: (take) Giá trị phải nhỏ hơn hoặc bằng {valueNumber}':
                   value:
                     errors:
                       - resource: PageReqDto
                         field: take
                         code: E1003
-                        message: Giá trị phải nhỏ hơn hoặc bằng {value}
-                'E1002: (take) Giá trị phải lớn hơn hoặc bằng {value}':
+                        message: Giá trị phải nhỏ hơn hoặc bằng {valueNumber}
+                'E1002: (take) Giá trị phải lớn hơn hoặc bằng {valueNumber}':
                   value:
                     errors:
                       - resource: PageReqDto
                         field: take
                         code: E1002
-                        message: Giá trị phải lớn hơn hoặc bằng {value}
+                        message: Giá trị phải lớn hơn hoặc bằng {valueNumber}
         '500':
           description: 'Error: Internal Server'
           content:
@@ -405,13 +405,13 @@ paths:
                         field: id
                         code: E1004
                         message: Giá trị phải là kiểu số
-                'E1002: (id) Giá trị phải lớn hơn hoặc bằng {value}':
+                'E1002: (id) Giá trị phải lớn hơn hoặc bằng {valueNumber}':
                   value:
                     errors:
                       - resource: DetailViTriReqDto
                         field: id
                         code: E1002
-                        message: Giá trị phải lớn hơn hoặc bằng {value}
+                        message: Giá trị phải lớn hơn hoặc bằng {valueNumber}
         '404':
           description: 'Error: Not Found'
           content:
@@ -490,13 +490,13 @@ paths:
                         field: id
                         code: E1004
                         message: Giá trị phải là kiểu số
-                'E1002: (id) Giá trị phải lớn hơn hoặc bằng {value}':
+                'E1002: (id) Giá trị phải lớn hơn hoặc bằng {valueNumber}':
                   value:
                     errors:
                       - resource: DetailViTriReqDto
                         field: id
                         code: E1002
-                        message: Giá trị phải lớn hơn hoặc bằng {value}
+                        message: Giá trị phải lớn hơn hoặc bằng {valueNumber}
                 'E1000: (tenViTri) Không được để trống':
                   value:
                     errors:
@@ -614,13 +614,13 @@ paths:
                         field: id
                         code: E1004
                         message: Giá trị phải là kiểu số
-                'E1002: (id) Giá trị phải lớn hơn hoặc bằng {value}':
+                'E1002: (id) Giá trị phải lớn hơn hoặc bằng {valueNumber}':
                   value:
                     errors:
                       - resource: DeleteViTriReqDto
                         field: id
                         code: E1002
-                        message: Giá trị phải lớn hơn hoặc bằng {value}
+                        message: Giá trị phải lớn hơn hoặc bằng {valueNumber}
         '401':
           description: 'Error: Unauthorized'
           content:
@@ -714,13 +714,13 @@ paths:
                         field: id
                         code: E1004
                         message: Giá trị phải là kiểu số
-                'E1002: (id) Giá trị phải lớn hơn hoặc bằng {value}':
+                'E1002: (id) Giá trị phải lớn hơn hoặc bằng {valueNumber}':
                   value:
                     errors:
                       - resource: DetailViTriReqDto
                         field: id
                         code: E1002
-                        message: Giá trị phải lớn hơn hoặc bằng {value}
+                        message: Giá trị phải lớn hơn hoặc bằng {valueNumber}
                 'E2001: Ảnh phải dưới hoặc bằng 5mb':
                   value:
                     errors:
@@ -766,6 +766,1324 @@ paths:
       tags: *ref_1
       security:
         - bearer: []
+  /api/nguoi-dung:
+    post:
+      operationId: NguoiDungController_create
+      summary: API tạo người dùng
+      description: API tạo người dùng
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateNguoiDungReqDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateNguoiDungResDto'
+        '400':
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      properties:
+                        resource:
+                          type: string
+                        code:
+                          type: string
+                        message:
+                          type: string
+              examples:
+                'E1000: (name) Không được để trống':
+                  value:
+                    errors:
+                      - resource: CreateNguoiDungReqDto
+                        field: name
+                        code: E1000
+                        message: Không được để trống
+                'E1000: (email) Không được để trống':
+                  value:
+                    errors:
+                      - resource: CreateNguoiDungReqDto
+                        field: email
+                        code: E1000
+                        message: Không được để trống
+                'E1000: (password) Không được để trống':
+                  value:
+                    errors:
+                      - resource: CreateNguoiDungReqDto
+                        field: password
+                        code: E1000
+                        message: Không được để trống
+                'E1000: (phone) Không được để trống':
+                  value:
+                    errors:
+                      - resource: CreateNguoiDungReqDto
+                        field: phone
+                        code: E1000
+                        message: Không được để trống
+                'E1001: (phone) Giá trị không vượt quá độ dài {valueNumber}':
+                  value:
+                    errors:
+                      - resource: CreateNguoiDungReqDto
+                        field: phone
+                        code: E1001
+                        message: Giá trị không vượt quá độ dài {valueNumber}
+                'E1000: (birthday) Không được để trống':
+                  value:
+                    errors:
+                      - resource: CreateNguoiDungReqDto
+                        field: birthday
+                        code: E1000
+                        message: Không được để trống
+                'E1000: (gender) Không được để trống':
+                  value:
+                    errors:
+                      - resource: CreateNguoiDungReqDto
+                        field: gender
+                        code: E1000
+                        message: Không được để trống
+                'E1001: (gender) Giá trị không vượt quá độ dài {valueNumber}':
+                  value:
+                    errors:
+                      - resource: CreateNguoiDungReqDto
+                        field: gender
+                        code: E1001
+                        message: Giá trị không vượt quá độ dài {valueNumber}
+                'E1000: (role) Không được để trống':
+                  value:
+                    errors:
+                      - resource: CreateNguoiDungReqDto
+                        field: role
+                        code: E1000
+                        message: Không được để trống
+                'E1005: (role) Giá trị phải thuộc 1 trong các giá trị sau:{valueIn}':
+                  value:
+                    errors:
+                      - resource: CreateNguoiDungReqDto
+                        field: role
+                        code: E1005
+                        message: Giá trị phải thuộc 1 trong các giá trị sau:{valueIn}
+                'E2000: Tài khoản đã tồn tại':
+                  value:
+                    errors:
+                      - code: E2000
+                        message: Tài khoản đã tồn tại
+        '401':
+          description: 'Error: Unauthorized'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedErrorTypeDto'
+        '403':
+          description: 'Error: Forbidden'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenErrorTypeDto'
+        '500':
+          description: 'Error: Internal Server'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorTypeDto'
+      tags: &ref_6
+        - NguoiDung
+      security:
+        - bearer: []
+    get:
+      operationId: NguoiDungController_list
+      summary: API danh sách người dùng
+      description: API danh sách người dùng
+      parameters:
+        - name: page
+          required: false
+          in: query
+          description: Page number
+          example: 1
+          schema:
+            type: number
+        - name: take
+          required: false
+          in: query
+          description: Number record in one page
+          example: 10
+          schema:
+            type: number
+        - name: keyword
+          required: false
+          in: query
+          example: example search query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListNguoiDungResDto'
+        '400':
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      properties:
+                        resource:
+                          type: string
+                        code:
+                          type: string
+                        message:
+                          type: string
+              examples:
+                'E1004: (page) Giá trị phải là kiểu số':
+                  value:
+                    errors:
+                      - resource: PageReqDto
+                        field: page
+                        code: E1004
+                        message: Giá trị phải là kiểu số
+                'E1003: (page) Giá trị phải nhỏ hơn hoặc bằng {valueNumber}':
+                  value:
+                    errors:
+                      - resource: PageReqDto
+                        field: page
+                        code: E1003
+                        message: Giá trị phải nhỏ hơn hoặc bằng {valueNumber}
+                'E1002: (page) Giá trị phải lớn hơn hoặc bằng {valueNumber}':
+                  value:
+                    errors:
+                      - resource: PageReqDto
+                        field: page
+                        code: E1002
+                        message: Giá trị phải lớn hơn hoặc bằng {valueNumber}
+                'E1004: (take) Giá trị phải là kiểu số':
+                  value:
+                    errors:
+                      - resource: PageReqDto
+                        field: take
+                        code: E1004
+                        message: Giá trị phải là kiểu số
+                'E1003: (take) Giá trị phải nhỏ hơn hoặc bằng {valueNumber}':
+                  value:
+                    errors:
+                      - resource: PageReqDto
+                        field: take
+                        code: E1003
+                        message: Giá trị phải nhỏ hơn hoặc bằng {valueNumber}
+                'E1002: (take) Giá trị phải lớn hơn hoặc bằng {valueNumber}':
+                  value:
+                    errors:
+                      - resource: PageReqDto
+                        field: take
+                        code: E1002
+                        message: Giá trị phải lớn hơn hoặc bằng {valueNumber}
+        '500':
+          description: 'Error: Internal Server'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorTypeDto'
+      tags: *ref_6
+  /api/nguoi-dung/{id}:
+    get:
+      operationId: NguoiDungController_detail
+      summary: API chi tiết người dùng
+      description: API chi tiết người dùng
+      parameters:
+        - name: id
+          required: true
+          in: query
+          description: Id number
+          example: 1
+          schema:
+            type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DetailNguoiDungResDto'
+        '400':
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: &ref_7
+                  errors:
+                    type: array
+                    items:
+                      properties:
+                        resource:
+                          type: string
+                        code:
+                          type: string
+                        message:
+                          type: string
+              examples:
+                'E1000: (id) Không được để trống':
+                  value:
+                    errors:
+                      - resource: DetailNguoiDungReqDto
+                        field: id
+                        code: E1000
+                        message: Không được để trống
+                'E1004: (id) Giá trị phải là kiểu số':
+                  value:
+                    errors:
+                      - resource: DetailNguoiDungReqDto
+                        field: id
+                        code: E1004
+                        message: Giá trị phải là kiểu số
+                'E1002: (id) Giá trị phải lớn hơn hoặc bằng {valueNumber}':
+                  value:
+                    errors:
+                      - resource: DetailNguoiDungReqDto
+                        field: id
+                        code: E1002
+                        message: Giá trị phải lớn hơn hoặc bằng {valueNumber}
+        '404':
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: *ref_7
+              examples:
+                NguoiDung không tìm thấy:
+                  value:
+                    errors:
+                      - resource: NguoiDung
+                        code: '404'
+                        message: Không tìm thấy
+        '500':
+          description: 'Error: Internal Server'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorTypeDto'
+      tags: *ref_6
+    put:
+      operationId: NguoiDungController_update
+      summary: API cập nhật người dùng
+      description: API cập nhật người dùng
+      parameters:
+        - name: id
+          required: true
+          in: query
+          description: Id number
+          example: 1
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateNguoiDungReqDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateNguoiDungResDto'
+        '400':
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: &ref_8
+                  errors:
+                    type: array
+                    items:
+                      properties:
+                        resource:
+                          type: string
+                        code:
+                          type: string
+                        message:
+                          type: string
+              examples:
+                'E1000: (id) Không được để trống':
+                  value:
+                    errors:
+                      - resource: DetailNguoiDungReqDto
+                        field: id
+                        code: E1000
+                        message: Không được để trống
+                'E1004: (id) Giá trị phải là kiểu số':
+                  value:
+                    errors:
+                      - resource: DetailNguoiDungReqDto
+                        field: id
+                        code: E1004
+                        message: Giá trị phải là kiểu số
+                'E1002: (id) Giá trị phải lớn hơn hoặc bằng {valueNumber}':
+                  value:
+                    errors:
+                      - resource: DetailNguoiDungReqDto
+                        field: id
+                        code: E1002
+                        message: Giá trị phải lớn hơn hoặc bằng {valueNumber}
+                'E1000: (name) Không được để trống':
+                  value:
+                    errors:
+                      - resource: UpdateNguoiDungReqDto
+                        field: name
+                        code: E1000
+                        message: Không được để trống
+                'E1000: (email) Không được để trống':
+                  value:
+                    errors:
+                      - resource: UpdateNguoiDungReqDto
+                        field: email
+                        code: E1000
+                        message: Không được để trống
+                'E1000: (password) Không được để trống':
+                  value:
+                    errors:
+                      - resource: UpdateNguoiDungReqDto
+                        field: password
+                        code: E1000
+                        message: Không được để trống
+                'E1000: (phone) Không được để trống':
+                  value:
+                    errors:
+                      - resource: UpdateNguoiDungReqDto
+                        field: phone
+                        code: E1000
+                        message: Không được để trống
+                'E1001: (phone) Giá trị không vượt quá độ dài {valueNumber}':
+                  value:
+                    errors:
+                      - resource: UpdateNguoiDungReqDto
+                        field: phone
+                        code: E1001
+                        message: Giá trị không vượt quá độ dài {valueNumber}
+                'E1000: (birthday) Không được để trống':
+                  value:
+                    errors:
+                      - resource: UpdateNguoiDungReqDto
+                        field: birthday
+                        code: E1000
+                        message: Không được để trống
+                'E1000: (gender) Không được để trống':
+                  value:
+                    errors:
+                      - resource: UpdateNguoiDungReqDto
+                        field: gender
+                        code: E1000
+                        message: Không được để trống
+                'E1001: (gender) Giá trị không vượt quá độ dài {valueNumber}':
+                  value:
+                    errors:
+                      - resource: UpdateNguoiDungReqDto
+                        field: gender
+                        code: E1001
+                        message: Giá trị không vượt quá độ dài {valueNumber}
+                'E1000: (role) Không được để trống':
+                  value:
+                    errors:
+                      - resource: UpdateNguoiDungReqDto
+                        field: role
+                        code: E1000
+                        message: Không được để trống
+                'E1005: (role) Giá trị phải thuộc 1 trong các giá trị sau:{valueIn}':
+                  value:
+                    errors:
+                      - resource: UpdateNguoiDungReqDto
+                        field: role
+                        code: E1005
+                        message: Giá trị phải thuộc 1 trong các giá trị sau:{valueIn}
+        '401':
+          description: 'Error: Unauthorized'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedErrorTypeDto'
+        '403':
+          description: 'Error: Forbidden'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenErrorTypeDto'
+        '404':
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: *ref_8
+              examples:
+                NguoiDung không tìm thấy:
+                  value:
+                    errors:
+                      - resource: NguoiDung
+                        code: '404'
+                        message: Không tìm thấy
+        '500':
+          description: 'Error: Internal Server'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorTypeDto'
+      tags: *ref_6
+      security:
+        - bearer: []
+    delete:
+      operationId: NguoiDungController_delete
+      summary: API xoá người dùng
+      description: API xoá người dùng
+      parameters:
+        - name: id
+          required: true
+          in: query
+          description: Id number
+          example: 1
+          schema:
+            type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteNguoiDungResDto'
+        '400':
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: &ref_9
+                  errors:
+                    type: array
+                    items:
+                      properties:
+                        resource:
+                          type: string
+                        code:
+                          type: string
+                        message:
+                          type: string
+              examples:
+                'E1000: (id) Không được để trống':
+                  value:
+                    errors:
+                      - resource: DeleteNguoiDungReqDto
+                        field: id
+                        code: E1000
+                        message: Không được để trống
+                'E1004: (id) Giá trị phải là kiểu số':
+                  value:
+                    errors:
+                      - resource: DeleteNguoiDungReqDto
+                        field: id
+                        code: E1004
+                        message: Giá trị phải là kiểu số
+                'E1002: (id) Giá trị phải lớn hơn hoặc bằng {valueNumber}':
+                  value:
+                    errors:
+                      - resource: DeleteNguoiDungReqDto
+                        field: id
+                        code: E1002
+                        message: Giá trị phải lớn hơn hoặc bằng {valueNumber}
+        '401':
+          description: 'Error: Unauthorized'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedErrorTypeDto'
+        '403':
+          description: 'Error: Forbidden'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenErrorTypeDto'
+        '404':
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: *ref_9
+              examples:
+                NguoiDung không tìm thấy:
+                  value:
+                    errors:
+                      - resource: NguoiDung
+                        code: '404'
+                        message: Không tìm thấy
+        '500':
+          description: 'Error: Internal Server'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorTypeDto'
+      tags: *ref_6
+      security:
+        - bearer: []
+  /api/nguoi-dung/{id}/upload-hinh-anh:
+    put:
+      operationId: NguoiDungController_uploadHinhAnh
+      summary: API cập nhật hình ảnh người dùng
+      description: API cập nhật hình ảnh người dùng
+      parameters:
+        - name: id
+          required: true
+          in: query
+          description: Id number
+          example: 1
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UploadHinhAnhNguoiDungReqDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadHinhAnhNguoiDungResDto'
+        '400':
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: &ref_10
+                  errors:
+                    type: array
+                    items:
+                      properties:
+                        resource:
+                          type: string
+                        code:
+                          type: string
+                        message:
+                          type: string
+              examples:
+                'E1000: (id) Không được để trống':
+                  value:
+                    errors:
+                      - resource: DetailNguoiDungReqDto
+                        field: id
+                        code: E1000
+                        message: Không được để trống
+                'E1004: (id) Giá trị phải là kiểu số':
+                  value:
+                    errors:
+                      - resource: DetailNguoiDungReqDto
+                        field: id
+                        code: E1004
+                        message: Giá trị phải là kiểu số
+                'E1002: (id) Giá trị phải lớn hơn hoặc bằng {valueNumber}':
+                  value:
+                    errors:
+                      - resource: DetailNguoiDungReqDto
+                        field: id
+                        code: E1002
+                        message: Giá trị phải lớn hơn hoặc bằng {valueNumber}
+                'E2001: Ảnh phải dưới hoặc bằng 5mb':
+                  value:
+                    errors:
+                      - code: E2001
+                        message: Ảnh phải dưới hoặc bằng 5mb
+                'E2002: Ảnh phải là jpg, jpeg hoặc png':
+                  value:
+                    errors:
+                      - code: E2002
+                        message: Ảnh phải là jpg, jpeg hoặc png
+        '401':
+          description: 'Error: Unauthorized'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedErrorTypeDto'
+        '403':
+          description: 'Error: Forbidden'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenErrorTypeDto'
+        '404':
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: *ref_10
+              examples:
+                NguoiDung không tìm thấy:
+                  value:
+                    errors:
+                      - resource: NguoiDung
+                        code: '404'
+                        message: Không tìm thấy
+        '500':
+          description: 'Error: Internal Server'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorTypeDto'
+      tags: *ref_6
+      security:
+        - bearer: []
+  /api/phong:
+    post:
+      operationId: PhongController_create
+      summary: API tạo vị trí
+      description: API tạo vị trí
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CreatePhongReqDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePhongResDto'
+        '400':
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      properties:
+                        resource:
+                          type: string
+                        code:
+                          type: string
+                        message:
+                          type: string
+              examples:
+                'E1000: (maViTri) Không được để trống':
+                  value:
+                    errors:
+                      - resource: CreatePhongReqDto
+                        field: maViTri
+                        code: E1000
+                        message: Không được để trống
+                'E1000: (tenPhong) Không được để trống':
+                  value:
+                    errors:
+                      - resource: CreatePhongReqDto
+                        field: tenPhong
+                        code: E1000
+                        message: Không được để trống
+                'E1000: (mota) Không được để trống':
+                  value:
+                    errors:
+                      - resource: CreatePhongReqDto
+                        field: mota
+                        code: E1000
+                        message: Không được để trống
+                'E1000: (khach) Không được để trống':
+                  value:
+                    errors:
+                      - resource: CreatePhongReqDto
+                        field: khach
+                        code: E1000
+                        message: Không được để trống
+                'E1000: (phongNgu) Không được để trống':
+                  value:
+                    errors:
+                      - resource: CreatePhongReqDto
+                        field: phongNgu
+                        code: E1000
+                        message: Không được để trống
+                'E1000: (giuong) Không được để trống':
+                  value:
+                    errors:
+                      - resource: CreatePhongReqDto
+                        field: giuong
+                        code: E1000
+                        message: Không được để trống
+                'E1000: (phongTam) Không được để trống':
+                  value:
+                    errors:
+                      - resource: CreatePhongReqDto
+                        field: phongTam
+                        code: E1000
+                        message: Không được để trống
+                'E1000: (giaTien) Không được để trống':
+                  value:
+                    errors:
+                      - resource: CreatePhongReqDto
+                        field: giaTien
+                        code: E1000
+                        message: Không được để trống
+                'E1000: (mayGiat) Không được để trống':
+                  value:
+                    errors:
+                      - resource: CreatePhongReqDto
+                        field: mayGiat
+                        code: E1000
+                        message: Không được để trống
+                'E1006: (mayGiat) Giá trị phải là kiểu boolean':
+                  value:
+                    errors:
+                      - resource: CreatePhongReqDto
+                        field: mayGiat
+                        code: E1006
+                        message: Giá trị phải là kiểu boolean
+                'E1000: (banLa) Không được để trống':
+                  value:
+                    errors:
+                      - resource: CreatePhongReqDto
+                        field: banLa
+                        code: E1000
+                        message: Không được để trống
+                'E1006: (banLa) Giá trị phải là kiểu boolean':
+                  value:
+                    errors:
+                      - resource: CreatePhongReqDto
+                        field: banLa
+                        code: E1006
+                        message: Giá trị phải là kiểu boolean
+                'E1000: (tivi) Không được để trống':
+                  value:
+                    errors:
+                      - resource: CreatePhongReqDto
+                        field: tivi
+                        code: E1000
+                        message: Không được để trống
+                'E1006: (tivi) Giá trị phải là kiểu boolean':
+                  value:
+                    errors:
+                      - resource: CreatePhongReqDto
+                        field: tivi
+                        code: E1006
+                        message: Giá trị phải là kiểu boolean
+                'E1000: (dieuHoa) Không được để trống':
+                  value:
+                    errors:
+                      - resource: CreatePhongReqDto
+                        field: dieuHoa
+                        code: E1000
+                        message: Không được để trống
+                'E1006: (dieuHoa) Giá trị phải là kiểu boolean':
+                  value:
+                    errors:
+                      - resource: CreatePhongReqDto
+                        field: dieuHoa
+                        code: E1006
+                        message: Giá trị phải là kiểu boolean
+                'E1000: (wifi) Không được để trống':
+                  value:
+                    errors:
+                      - resource: CreatePhongReqDto
+                        field: wifi
+                        code: E1000
+                        message: Không được để trống
+                'E1006: (wifi) Giá trị phải là kiểu boolean':
+                  value:
+                    errors:
+                      - resource: CreatePhongReqDto
+                        field: wifi
+                        code: E1006
+                        message: Giá trị phải là kiểu boolean
+                'E1000: (bep) Không được để trống':
+                  value:
+                    errors:
+                      - resource: CreatePhongReqDto
+                        field: bep
+                        code: E1000
+                        message: Không được để trống
+                'E1006: (bep) Giá trị phải là kiểu boolean':
+                  value:
+                    errors:
+                      - resource: CreatePhongReqDto
+                        field: bep
+                        code: E1006
+                        message: Giá trị phải là kiểu boolean
+                'E1000: (doXe) Không được để trống':
+                  value:
+                    errors:
+                      - resource: CreatePhongReqDto
+                        field: doXe
+                        code: E1000
+                        message: Không được để trống
+                'E1006: (doXe) Giá trị phải là kiểu boolean':
+                  value:
+                    errors:
+                      - resource: CreatePhongReqDto
+                        field: doXe
+                        code: E1006
+                        message: Giá trị phải là kiểu boolean
+                'E1000: (hoBoi) Không được để trống':
+                  value:
+                    errors:
+                      - resource: CreatePhongReqDto
+                        field: hoBoi
+                        code: E1000
+                        message: Không được để trống
+                'E1006: (hoBoi) Giá trị phải là kiểu boolean':
+                  value:
+                    errors:
+                      - resource: CreatePhongReqDto
+                        field: hoBoi
+                        code: E1006
+                        message: Giá trị phải là kiểu boolean
+                'E1000: (banUi) Không được để trống':
+                  value:
+                    errors:
+                      - resource: CreatePhongReqDto
+                        field: banUi
+                        code: E1000
+                        message: Không được để trống
+                'E1006: (banUi) Giá trị phải là kiểu boolean':
+                  value:
+                    errors:
+                      - resource: CreatePhongReqDto
+                        field: banUi
+                        code: E1006
+                        message: Giá trị phải là kiểu boolean
+                'E2001: Ảnh phải dưới hoặc bằng 5mb':
+                  value:
+                    errors:
+                      - code: E2001
+                        message: Ảnh phải dưới hoặc bằng 5mb
+                'E2002: Ảnh phải là jpg, jpeg hoặc png':
+                  value:
+                    errors:
+                      - code: E2002
+                        message: Ảnh phải là jpg, jpeg hoặc png
+        '401':
+          description: 'Error: Unauthorized'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedErrorTypeDto'
+        '403':
+          description: 'Error: Forbidden'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenErrorTypeDto'
+        '500':
+          description: 'Error: Internal Server'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorTypeDto'
+      tags: &ref_11
+        - Phong
+      security:
+        - bearer: []
+    get:
+      operationId: PhongController_list
+      summary: API danh sách phòng
+      description: API danh sách phòng
+      parameters:
+        - name: page
+          required: false
+          in: query
+          description: Page number
+          example: 1
+          schema:
+            type: number
+        - name: take
+          required: false
+          in: query
+          description: Number record in one page
+          example: 10
+          schema:
+            type: number
+        - name: keyword
+          required: false
+          in: query
+          example: example search query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListPhongResDto'
+        '400':
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      properties:
+                        resource:
+                          type: string
+                        code:
+                          type: string
+                        message:
+                          type: string
+              examples:
+                'E1004: (page) Giá trị phải là kiểu số':
+                  value:
+                    errors:
+                      - resource: PageReqDto
+                        field: page
+                        code: E1004
+                        message: Giá trị phải là kiểu số
+                'E1003: (page) Giá trị phải nhỏ hơn hoặc bằng {valueNumber}':
+                  value:
+                    errors:
+                      - resource: PageReqDto
+                        field: page
+                        code: E1003
+                        message: Giá trị phải nhỏ hơn hoặc bằng {valueNumber}
+                'E1002: (page) Giá trị phải lớn hơn hoặc bằng {valueNumber}':
+                  value:
+                    errors:
+                      - resource: PageReqDto
+                        field: page
+                        code: E1002
+                        message: Giá trị phải lớn hơn hoặc bằng {valueNumber}
+                'E1004: (take) Giá trị phải là kiểu số':
+                  value:
+                    errors:
+                      - resource: PageReqDto
+                        field: take
+                        code: E1004
+                        message: Giá trị phải là kiểu số
+                'E1003: (take) Giá trị phải nhỏ hơn hoặc bằng {valueNumber}':
+                  value:
+                    errors:
+                      - resource: PageReqDto
+                        field: take
+                        code: E1003
+                        message: Giá trị phải nhỏ hơn hoặc bằng {valueNumber}
+                'E1002: (take) Giá trị phải lớn hơn hoặc bằng {valueNumber}':
+                  value:
+                    errors:
+                      - resource: PageReqDto
+                        field: take
+                        code: E1002
+                        message: Giá trị phải lớn hơn hoặc bằng {valueNumber}
+        '500':
+          description: 'Error: Internal Server'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorTypeDto'
+      tags: *ref_11
+  /api/phong/{id}:
+    get:
+      operationId: PhongController_detail
+      summary: API chi tiết phòng
+      description: API chi tiết phòng
+      parameters:
+        - name: id
+          required: true
+          in: query
+          description: Id number
+          example: 1
+          schema:
+            type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DetailPhongResDto'
+        '400':
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: &ref_12
+                  errors:
+                    type: array
+                    items:
+                      properties:
+                        resource:
+                          type: string
+                        code:
+                          type: string
+                        message:
+                          type: string
+              examples:
+                'E1000: (id) Không được để trống':
+                  value:
+                    errors:
+                      - resource: DetailPhongReqDto
+                        field: id
+                        code: E1000
+                        message: Không được để trống
+                'E1004: (id) Giá trị phải là kiểu số':
+                  value:
+                    errors:
+                      - resource: DetailPhongReqDto
+                        field: id
+                        code: E1004
+                        message: Giá trị phải là kiểu số
+                'E1002: (id) Giá trị phải lớn hơn hoặc bằng {valueNumber}':
+                  value:
+                    errors:
+                      - resource: DetailPhongReqDto
+                        field: id
+                        code: E1002
+                        message: Giá trị phải lớn hơn hoặc bằng {valueNumber}
+        '404':
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: *ref_12
+              examples:
+                Phong không tìm thấy:
+                  value:
+                    errors:
+                      - resource: Phong
+                        code: '404'
+                        message: Không tìm thấy
+        '500':
+          description: 'Error: Internal Server'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorTypeDto'
+      tags: *ref_11
+    delete:
+      operationId: PhongController_delete
+      summary: API xoá phòng
+      description: API xoá phòng
+      parameters:
+        - name: id
+          required: true
+          in: query
+          description: Id number
+          example: 1
+          schema:
+            type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeletePhongResDto'
+        '400':
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: &ref_13
+                  errors:
+                    type: array
+                    items:
+                      properties:
+                        resource:
+                          type: string
+                        code:
+                          type: string
+                        message:
+                          type: string
+              examples:
+                'E1000: (id) Không được để trống':
+                  value:
+                    errors:
+                      - resource: DeletePhongReqDto
+                        field: id
+                        code: E1000
+                        message: Không được để trống
+                'E1004: (id) Giá trị phải là kiểu số':
+                  value:
+                    errors:
+                      - resource: DeletePhongReqDto
+                        field: id
+                        code: E1004
+                        message: Giá trị phải là kiểu số
+                'E1002: (id) Giá trị phải lớn hơn hoặc bằng {valueNumber}':
+                  value:
+                    errors:
+                      - resource: DeletePhongReqDto
+                        field: id
+                        code: E1002
+                        message: Giá trị phải lớn hơn hoặc bằng {valueNumber}
+        '401':
+          description: 'Error: Unauthorized'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedErrorTypeDto'
+        '403':
+          description: 'Error: Forbidden'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenErrorTypeDto'
+        '404':
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: *ref_13
+              examples:
+                ViTri không tìm thấy:
+                  value:
+                    errors:
+                      - resource: ViTri
+                        code: '404'
+                        message: Không tìm thấy
+        '500':
+          description: 'Error: Internal Server'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorTypeDto'
+      tags: *ref_11
+      security:
+        - bearer: []
+  /api/phong/{id}/upload-hinh-anh:
+    put:
+      operationId: PhongController_uploadHinhAnh
+      summary: API cập nhật hình ảnh phòng
+      description: API cập nhật hình ảnh phòng
+      parameters:
+        - name: id
+          required: true
+          in: query
+          description: Id number
+          example: 1
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UploadHinhAnhPhongReqDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadHinhAnhPhongResDto'
+        '400':
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: &ref_14
+                  errors:
+                    type: array
+                    items:
+                      properties:
+                        resource:
+                          type: string
+                        code:
+                          type: string
+                        message:
+                          type: string
+              examples:
+                'E1000: (id) Không được để trống':
+                  value:
+                    errors:
+                      - resource: DetailPhongReqDto
+                        field: id
+                        code: E1000
+                        message: Không được để trống
+                'E1004: (id) Giá trị phải là kiểu số':
+                  value:
+                    errors:
+                      - resource: DetailPhongReqDto
+                        field: id
+                        code: E1004
+                        message: Giá trị phải là kiểu số
+                'E1002: (id) Giá trị phải lớn hơn hoặc bằng {valueNumber}':
+                  value:
+                    errors:
+                      - resource: DetailPhongReqDto
+                        field: id
+                        code: E1002
+                        message: Giá trị phải lớn hơn hoặc bằng {valueNumber}
+                'E2001: Ảnh phải dưới hoặc bằng 5mb':
+                  value:
+                    errors:
+                      - code: E2001
+                        message: Ảnh phải dưới hoặc bằng 5mb
+                'E2002: Ảnh phải là jpg, jpeg hoặc png':
+                  value:
+                    errors:
+                      - code: E2002
+                        message: Ảnh phải là jpg, jpeg hoặc png
+        '401':
+          description: 'Error: Unauthorized'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedErrorTypeDto'
+        '403':
+          description: 'Error: Forbidden'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenErrorTypeDto'
+        '404':
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: *ref_14
+              examples:
+                Phong không tìm thấy:
+                  value:
+                    errors:
+                      - resource: Phong
+                        code: '404'
+                        message: Không tìm thấy
+        '500':
+          description: 'Error: Internal Server'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorTypeDto'
+      tags: *ref_11
+      security:
+        - bearer: []
 info:
   title: Air bnb
   description: Air bnb docs
@@ -798,7 +2116,7 @@ components:
         birthday:
           format: date-time
           type: string
-          example: 2024-02-07T14:33:35.728Z
+          example: 2024-02-07T18:47:13.042Z
         gender:
           type: string
           example: gender
@@ -826,7 +2144,7 @@ components:
           example: '0354030301'
         birthday:
           type: string
-          example: 2024-02-07T14:33:35.768Z
+          example: 2024-02-07T18:47:13.076Z
         gender:
           type: string
           example: Male
@@ -1078,6 +2396,674 @@ components:
         - quocGia
         - hinhAnh
     DeleteViTriResDto:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 1
+      required:
+        - id
+    CreateNguoiDungReqDto:
+      type: object
+      properties:
+        name:
+          type: string
+          example: name
+        email:
+          type: string
+          example: email@example.com
+        password:
+          type: string
+          example: password
+        phone:
+          type: string
+          example: '0354030301'
+        birthday:
+          format: date-time
+          type: string
+          example: 2024-02-07T18:47:13.146Z
+        gender:
+          type: string
+          example: gender
+        role:
+          type: string
+          example: user
+          enum:
+            - user
+            - admin
+      required:
+        - name
+        - email
+        - password
+        - phone
+        - birthday
+        - gender
+        - role
+    CreateNguoiDungResDto:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 1
+        email:
+          type: number
+          example: example@email.com
+        password:
+          type: string
+          example: password
+        phone:
+          type: string
+          example: '0354030301'
+        birthday:
+          type: string
+          example: 2024-02-07T18:47:13.146Z
+        gender:
+          type: string
+          example: Male
+        role:
+          type: string
+          example: editor
+      required:
+        - id
+        - email
+        - password
+        - phone
+        - birthday
+        - gender
+        - role
+    NguoiDungDto:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 1
+        email:
+          type: number
+          example: example@email.com
+        password:
+          type: string
+          example: password
+        phone:
+          type: string
+          example: '0354030301'
+        birthday:
+          type: string
+          example: 2024-02-07T18:47:13.147Z
+        gender:
+          type: string
+          example: Male
+        role:
+          type: string
+          example: editor
+      required:
+        - id
+        - email
+        - password
+        - phone
+        - birthday
+        - gender
+        - role
+    ListNguoiDungResDto:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/NguoiDungDto'
+        meta:
+          $ref: '#/components/schemas/PageMetaDto'
+      required:
+        - data
+        - meta
+    DetailNguoiDungResDto:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 1
+        email:
+          type: number
+          example: example@email.com
+        password:
+          type: string
+          example: password
+        phone:
+          type: string
+          example: '0354030301'
+        birthday:
+          type: string
+          example: 2024-02-07T18:47:13.147Z
+        gender:
+          type: string
+          example: Male
+        role:
+          type: string
+          example: editor
+      required:
+        - id
+        - email
+        - password
+        - phone
+        - birthday
+        - gender
+        - role
+    UpdateNguoiDungReqDto:
+      type: object
+      properties:
+        name:
+          type: string
+          example: name
+        email:
+          type: string
+          example: email@example.com
+        password:
+          type: string
+          example: password
+        phone:
+          type: string
+          example: '0354030301'
+        birthday:
+          format: date-time
+          type: string
+          example: 2024-02-07T18:47:13.148Z
+        gender:
+          type: string
+          example: gender
+        role:
+          type: string
+          example: user
+          enum:
+            - user
+            - admin
+      required:
+        - name
+        - email
+        - password
+        - phone
+        - birthday
+        - gender
+        - role
+    UpdateNguoiDungResDto:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 1
+        email:
+          type: number
+          example: example@email.com
+        password:
+          type: string
+          example: password
+        phone:
+          type: string
+          example: '0354030301'
+        birthday:
+          type: string
+          example: 2024-02-07T18:47:13.148Z
+        gender:
+          type: string
+          example: Male
+        role:
+          type: string
+          example: editor
+      required:
+        - id
+        - email
+        - password
+        - phone
+        - birthday
+        - gender
+        - role
+    UploadHinhAnhNguoiDungReqDto:
+      type: object
+      properties:
+        hinhAnh:
+          type: string
+          format: binary
+      required:
+        - hinhAnh
+    UploadHinhAnhNguoiDungResDto:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 1
+        email:
+          type: number
+          example: example@email.com
+        password:
+          type: string
+          example: password
+        phone:
+          type: string
+          example: '0354030301'
+        birthday:
+          type: string
+          example: 2024-02-07T18:47:13.149Z
+        gender:
+          type: string
+          example: Male
+        role:
+          type: string
+          example: editor
+      required:
+        - id
+        - email
+        - password
+        - phone
+        - birthday
+        - gender
+        - role
+    DeleteNguoiDungResDto:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 1
+      required:
+        - id
+    CreatePhongReqDto:
+      type: object
+      properties:
+        maViTri:
+          type: number
+          example: 1
+        tenPhong:
+          type: string
+          example: V.I.P
+        mota:
+          type: string
+          example: V.I.P
+        khach:
+          type: number
+          example: 3
+        phongNgu:
+          type: number
+          example: 3
+        giuong:
+          type: number
+          example: 3
+        phongTam:
+          type: number
+          example: 3
+        giaTien:
+          type: number
+          example: 100000
+        mayGiat:
+          type: boolean
+          example: true
+        banLa:
+          type: boolean
+          example: true
+        tivi:
+          type: boolean
+          example: true
+        dieuHoa:
+          type: boolean
+          example: true
+        wifi:
+          type: boolean
+          example: true
+        bep:
+          type: boolean
+          example: true
+        doXe:
+          type: boolean
+          example: true
+        hoBoi:
+          type: boolean
+          example: true
+        banUi:
+          type: boolean
+          example: true
+        hinhAnh:
+          type: string
+          format: binary
+      required:
+        - maViTri
+        - tenPhong
+        - mota
+        - khach
+        - phongNgu
+        - giuong
+        - phongTam
+        - giaTien
+        - mayGiat
+        - banLa
+        - tivi
+        - dieuHoa
+        - wifi
+        - bep
+        - doXe
+        - hoBoi
+        - banUi
+        - hinhAnh
+    CreatePhongResDto:
+      type: object
+      properties:
+        maViTri:
+          type: number
+          example: 1
+        tenPhong:
+          type: string
+          example: V.I.P
+        moTa:
+          type: string
+          example: V.I.P
+        khach:
+          type: string
+          example: 3
+        phongNgu:
+          type: string
+          example: 3
+        giuong:
+          type: string
+          example: 3
+        phongTam:
+          type: string
+          example: 3
+        giaTien:
+          type: string
+          example: 100000
+        mayGiat:
+          type: boolean
+          example: true
+        banLa:
+          type: boolean
+          example: true
+        tivi:
+          type: boolean
+          example: true
+        dieuHoa:
+          type: boolean
+          example: true
+        wifi:
+          type: boolean
+          example: true
+        bep:
+          type: boolean
+          example: true
+        doXe:
+          type: boolean
+          example: true
+        hoBoi:
+          type: boolean
+          example: true
+        banUi:
+          type: boolean
+          example: true
+        hinhAnh:
+          type: string
+          example: data:image/png;base64,60c663d2ccd0381873d8d09bfe8329b0
+      required:
+        - maViTri
+        - tenPhong
+        - moTa
+        - khach
+        - phongNgu
+        - giuong
+        - phongTam
+        - giaTien
+        - mayGiat
+        - banLa
+        - tivi
+        - dieuHoa
+        - wifi
+        - bep
+        - doXe
+        - hoBoi
+        - banUi
+        - hinhAnh
+    PhongDto:
+      type: object
+      properties:
+        maViTri:
+          type: number
+          example: 1
+        tenPhong:
+          type: string
+          example: V.I.P
+        moTa:
+          type: string
+          example: V.I.P
+        khach:
+          type: string
+          example: 3
+        phongNgu:
+          type: string
+          example: 3
+        giuong:
+          type: string
+          example: 3
+        phongTam:
+          type: string
+          example: 3
+        giaTien:
+          type: string
+          example: 100000
+        mayGiat:
+          type: boolean
+          example: true
+        banLa:
+          type: boolean
+          example: true
+        tivi:
+          type: boolean
+          example: true
+        dieuHoa:
+          type: boolean
+          example: true
+        wifi:
+          type: boolean
+          example: true
+        bep:
+          type: boolean
+          example: true
+        doXe:
+          type: boolean
+          example: true
+        hoBoi:
+          type: boolean
+          example: true
+        banUi:
+          type: boolean
+          example: true
+        hinhAnh:
+          type: string
+          example: data:image/png;base64,60c663d2ccd0381873d8d09bfe8329b0
+      required:
+        - maViTri
+        - tenPhong
+        - moTa
+        - khach
+        - phongNgu
+        - giuong
+        - phongTam
+        - giaTien
+        - mayGiat
+        - banLa
+        - tivi
+        - dieuHoa
+        - wifi
+        - bep
+        - doXe
+        - hoBoi
+        - banUi
+        - hinhAnh
+    ListPhongResDto:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhongDto'
+        meta:
+          $ref: '#/components/schemas/PageMetaDto'
+      required:
+        - data
+        - meta
+    DetailPhongResDto:
+      type: object
+      properties:
+        maViTri:
+          type: number
+          example: 1
+        tenPhong:
+          type: string
+          example: V.I.P
+        moTa:
+          type: string
+          example: V.I.P
+        khach:
+          type: string
+          example: 3
+        phongNgu:
+          type: string
+          example: 3
+        giuong:
+          type: string
+          example: 3
+        phongTam:
+          type: string
+          example: 3
+        giaTien:
+          type: string
+          example: 100000
+        mayGiat:
+          type: boolean
+          example: true
+        banLa:
+          type: boolean
+          example: true
+        tivi:
+          type: boolean
+          example: true
+        dieuHoa:
+          type: boolean
+          example: true
+        wifi:
+          type: boolean
+          example: true
+        bep:
+          type: boolean
+          example: true
+        doXe:
+          type: boolean
+          example: true
+        hoBoi:
+          type: boolean
+          example: true
+        banUi:
+          type: boolean
+          example: true
+        hinhAnh:
+          type: string
+          example: data:image/png;base64,60c663d2ccd0381873d8d09bfe8329b0
+      required:
+        - maViTri
+        - tenPhong
+        - moTa
+        - khach
+        - phongNgu
+        - giuong
+        - phongTam
+        - giaTien
+        - mayGiat
+        - banLa
+        - tivi
+        - dieuHoa
+        - wifi
+        - bep
+        - doXe
+        - hoBoi
+        - banUi
+        - hinhAnh
+    UploadHinhAnhPhongReqDto:
+      type: object
+      properties:
+        hinhAnh:
+          type: string
+          format: binary
+      required:
+        - hinhAnh
+    UploadHinhAnhPhongResDto:
+      type: object
+      properties:
+        maViTri:
+          type: number
+          example: 1
+        tenPhong:
+          type: string
+          example: V.I.P
+        moTa:
+          type: string
+          example: V.I.P
+        khach:
+          type: string
+          example: 3
+        phongNgu:
+          type: string
+          example: 3
+        giuong:
+          type: string
+          example: 3
+        phongTam:
+          type: string
+          example: 3
+        giaTien:
+          type: string
+          example: 100000
+        mayGiat:
+          type: boolean
+          example: true
+        banLa:
+          type: boolean
+          example: true
+        tivi:
+          type: boolean
+          example: true
+        dieuHoa:
+          type: boolean
+          example: true
+        wifi:
+          type: boolean
+          example: true
+        bep:
+          type: boolean
+          example: true
+        doXe:
+          type: boolean
+          example: true
+        hoBoi:
+          type: boolean
+          example: true
+        banUi:
+          type: boolean
+          example: true
+        hinhAnh:
+          type: string
+          example: data:image/png;base64,60c663d2ccd0381873d8d09bfe8329b0
+      required:
+        - maViTri
+        - tenPhong
+        - moTa
+        - khach
+        - phongNgu
+        - giuong
+        - phongTam
+        - giaTien
+        - mayGiat
+        - banLa
+        - tivi
+        - dieuHoa
+        - wifi
+        - bep
+        - doXe
+        - hoBoi
+        - banUi
+        - hinhAnh
+    DeletePhongResDto:
       type: object
       properties:
         id:
