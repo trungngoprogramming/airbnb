@@ -18,17 +18,16 @@ export class AuthService {
     if (user) throw new BadRequestException(Errors.Common.accountExisted);
 
     return this.prisma.nguoiDung.create({
-      data: signupReqDto,
+      data: { ...signupReqDto, role: 'user' },
     })
   }
 
   async signin({ email, password }: SignInReqDto) {
-    const { id, name, role, phone, gender, birthday } = await this.prisma.nguoiDung.findFirst({ where: { email, password } });
+    const { id } = await this.prisma.nguoiDung.findFirstOrThrow({ where: { email, password }, select: { id: true } });
 
     return {
       accessToken: this.jwtService.sign(
-        { id, name, email, role, phone, gender, birthday },
-        { secret: process.env.JWT_SECRET_KEY }
+        { id, email },
       )
     };
   }

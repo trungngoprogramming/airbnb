@@ -5,7 +5,7 @@ import {
   ExceptionFilter,
 } from '@nestjs/common';
 import { ValidationError, isArray } from 'class-validator';
-import { find, first, get, isEmpty, replace } from 'lodash';
+import { first, isEmpty, replace } from 'lodash';
 import { Errors } from '../constants/error.constant';
 
 const validationError = (error: ValidationError) => {

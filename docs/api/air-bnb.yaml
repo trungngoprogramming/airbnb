@@ -65,13 +65,13 @@ paths:
                         field: phone
                         code: E1000
                         message: Không được để trống
-                'E1001: (phone) Giá trị không vượt quá {value}':
+                'E1001: (phone) Giá trị không vượt quá độ dài {value}':
                   value:
                     errors:
                       - resource: SignUpReqDto
                         field: phone
                         code: E1001
-                        message: Giá trị không vượt quá {value}
+                        message: Giá trị không vượt quá độ dài {value}
                 'E1000: (birthday) Không được để trống':
                   value:
                     errors:
@@ -86,27 +86,13 @@ paths:
                         field: gender
                         code: E1000
                         message: Không được để trống
-                'E1001: (gender) Giá trị không vượt quá {value}':
+                'E1001: (gender) Giá trị không vượt quá độ dài {value}':
                   value:
                     errors:
                       - resource: SignUpReqDto
                         field: gender
                         code: E1001
-                        message: Giá trị không vượt quá {value}
-                'E1000: (role) Không được để trống':
-                  value:
-                    errors:
-                      - resource: SignUpReqDto
-                        field: role
-                        code: E1000
-                        message: Không được để trống
-                'E1001: (role) Giá trị không vượt quá {value}':
-                  value:
-                    errors:
-                      - resource: SignUpReqDto
-                        field: role
-                        code: E1001
-                        message: Giá trị không vượt quá {value}
+                        message: Giá trị không vượt quá độ dài {value}
                 'E2000: Tài khoản đã tồn tại':
                   value:
                     errors:
@@ -119,7 +105,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/InternalServerErrorTypeDto'
       tags: &ref_0
-        - auth
+        - Auth
   /api/auth/signin:
     post:
       operationId: AuthController_signin
@@ -178,6 +164,608 @@ paths:
               schema:
                 $ref: '#/components/schemas/InternalServerErrorTypeDto'
       tags: *ref_0
+  /api/vi-tri:
+    post:
+      operationId: ViTriController_create
+      summary: API tạo vị trí
+      description: API tạo vị trí
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CreateViTriReqDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateViTriResDto'
+        '400':
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      properties:
+                        resource:
+                          type: string
+                        code:
+                          type: string
+                        message:
+                          type: string
+              examples:
+                'E1000: (tenViTri) Không được để trống':
+                  value:
+                    errors:
+                      - resource: CreateViTriReqDto
+                        field: tenViTri
+                        code: E1000
+                        message: Không được để trống
+                'E1000: (tinhThanh) Không được để trống':
+                  value:
+                    errors:
+                      - resource: CreateViTriReqDto
+                        field: tinhThanh
+                        code: E1000
+                        message: Không được để trống
+                'E1000: (quocGia) Không được để trống':
+                  value:
+                    errors:
+                      - resource: CreateViTriReqDto
+                        field: quocGia
+                        code: E1000
+                        message: Không được để trống
+                'E2001: Ảnh phải dưới hoặc bằng 5mb':
+                  value:
+                    errors:
+                      - code: E2001
+                        message: Ảnh phải dưới hoặc bằng 5mb
+                'E2002: Ảnh phải là jpg, jpeg hoặc png':
+                  value:
+                    errors:
+                      - code: E2002
+                        message: Ảnh phải là jpg, jpeg hoặc png
+        '401':
+          description: 'Error: Unauthorized'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedErrorTypeDto'
+        '403':
+          description: 'Error: Forbidden'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenErrorTypeDto'
+        '500':
+          description: 'Error: Internal Server'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorTypeDto'
+      tags: &ref_1
+        - ViTri
+      security:
+        - bearer: []
+    get:
+      operationId: ViTriController_list
+      summary: API danh sách vị trí
+      description: API danh sách vị trí
+      parameters:
+        - name: page
+          required: false
+          in: query
+          description: Page number
+          example: 1
+          schema:
+            type: number
+        - name: take
+          required: false
+          in: query
+          description: Number record in one page
+          example: 10
+          schema:
+            type: number
+        - name: keyword
+          required: false
+          in: query
+          example: example search query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListViTriResDto'
+        '400':
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      properties:
+                        resource:
+                          type: string
+                        code:
+                          type: string
+                        message:
+                          type: string
+              examples:
+                'E1004: (page) Giá trị phải là kiểu số':
+                  value:
+                    errors:
+                      - resource: PageReqDto
+                        field: page
+                        code: E1004
+                        message: Giá trị phải là kiểu số
+                'E1003: (page) Giá trị phải nhỏ hơn hoặc bằng {value}':
+                  value:
+                    errors:
+                      - resource: PageReqDto
+                        field: page
+                        code: E1003
+                        message: Giá trị phải nhỏ hơn hoặc bằng {value}
+                'E1002: (page) Giá trị phải lớn hơn hoặc bằng {value}':
+                  value:
+                    errors:
+                      - resource: PageReqDto
+                        field: page
+                        code: E1002
+                        message: Giá trị phải lớn hơn hoặc bằng {value}
+                'E1004: (take) Giá trị phải là kiểu số':
+                  value:
+                    errors:
+                      - resource: PageReqDto
+                        field: take
+                        code: E1004
+                        message: Giá trị phải là kiểu số
+                'E1003: (take) Giá trị phải nhỏ hơn hoặc bằng {value}':
+                  value:
+                    errors:
+                      - resource: PageReqDto
+                        field: take
+                        code: E1003
+                        message: Giá trị phải nhỏ hơn hoặc bằng {value}
+                'E1002: (take) Giá trị phải lớn hơn hoặc bằng {value}':
+                  value:
+                    errors:
+                      - resource: PageReqDto
+                        field: take
+                        code: E1002
+                        message: Giá trị phải lớn hơn hoặc bằng {value}
+        '500':
+          description: 'Error: Internal Server'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorTypeDto'
+      tags: *ref_1
+  /api/vi-tri/{id}:
+    get:
+      operationId: ViTriController_detail
+      summary: API chi tiết vị trí
+      description: API chi tiết vị trí
+      parameters:
+        - name: id
+          required: true
+          in: query
+          description: Id number
+          example: 1
+          schema:
+            type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DetailViTriResDto'
+        '400':
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: &ref_2
+                  errors:
+                    type: array
+                    items:
+                      properties:
+                        resource:
+                          type: string
+                        code:
+                          type: string
+                        message:
+                          type: string
+              examples:
+                'E1000: (id) Không được để trống':
+                  value:
+                    errors:
+                      - resource: DetailViTriReqDto
+                        field: id
+                        code: E1000
+                        message: Không được để trống
+                'E1004: (id) Giá trị phải là kiểu số':
+                  value:
+                    errors:
+                      - resource: DetailViTriReqDto
+                        field: id
+                        code: E1004
+                        message: Giá trị phải là kiểu số
+                'E1002: (id) Giá trị phải lớn hơn hoặc bằng {value}':
+                  value:
+                    errors:
+                      - resource: DetailViTriReqDto
+                        field: id
+                        code: E1002
+                        message: Giá trị phải lớn hơn hoặc bằng {value}
+        '404':
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: *ref_2
+              examples:
+                ViTri không tìm thấy:
+                  value:
+                    errors:
+                      - resource: ViTri
+                        code: '404'
+                        message: Không tìm thấy
+        '500':
+          description: 'Error: Internal Server'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorTypeDto'
+      tags: *ref_1
+    put:
+      operationId: ViTriController_update
+      summary: API cập nhật vị trí
+      description: API cập nhật vị trí
+      parameters:
+        - name: id
+          required: true
+          in: query
+          description: Id number
+          example: 1
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UpdateViTriReqDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateViTriResDto'
+        '400':
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: &ref_3
+                  errors:
+                    type: array
+                    items:
+                      properties:
+                        resource:
+                          type: string
+                        code:
+                          type: string
+                        message:
+                          type: string
+              examples:
+                'E1000: (id) Không được để trống':
+                  value:
+                    errors:
+                      - resource: DetailViTriReqDto
+                        field: id
+                        code: E1000
+                        message: Không được để trống
+                'E1004: (id) Giá trị phải là kiểu số':
+                  value:
+                    errors:
+                      - resource: DetailViTriReqDto
+                        field: id
+                        code: E1004
+                        message: Giá trị phải là kiểu số
+                'E1002: (id) Giá trị phải lớn hơn hoặc bằng {value}':
+                  value:
+                    errors:
+                      - resource: DetailViTriReqDto
+                        field: id
+                        code: E1002
+                        message: Giá trị phải lớn hơn hoặc bằng {value}
+                'E1000: (tenViTri) Không được để trống':
+                  value:
+                    errors:
+                      - resource: UpdateViTriReqDto
+                        field: tenViTri
+                        code: E1000
+                        message: Không được để trống
+                'E1000: (tinhThanh) Không được để trống':
+                  value:
+                    errors:
+                      - resource: UpdateViTriReqDto
+                        field: tinhThanh
+                        code: E1000
+                        message: Không được để trống
+                'E1000: (quocGia) Không được để trống':
+                  value:
+                    errors:
+                      - resource: UpdateViTriReqDto
+                        field: quocGia
+                        code: E1000
+                        message: Không được để trống
+                'E2001: Ảnh phải dưới hoặc bằng 5mb':
+                  value:
+                    errors:
+                      - code: E2001
+                        message: Ảnh phải dưới hoặc bằng 5mb
+                'E2002: Ảnh phải là jpg, jpeg hoặc png':
+                  value:
+                    errors:
+                      - code: E2002
+                        message: Ảnh phải là jpg, jpeg hoặc png
+        '401':
+          description: 'Error: Unauthorized'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedErrorTypeDto'
+        '403':
+          description: 'Error: Forbidden'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenErrorTypeDto'
+        '404':
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: *ref_3
+              examples:
+                ViTri không tìm thấy:
+                  value:
+                    errors:
+                      - resource: ViTri
+                        code: '404'
+                        message: Không tìm thấy
+        '500':
+          description: 'Error: Internal Server'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorTypeDto'
+      tags: *ref_1
+      security:
+        - bearer: []
+    delete:
+      operationId: ViTriController_delete
+      summary: API xoá vị trí
+      description: API xoá vị trí
+      parameters:
+        - name: id
+          required: true
+          in: query
+          description: Id number
+          example: 1
+          schema:
+            type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteViTriResDto'
+        '400':
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: &ref_4
+                  errors:
+                    type: array
+                    items:
+                      properties:
+                        resource:
+                          type: string
+                        code:
+                          type: string
+                        message:
+                          type: string
+              examples:
+                'E1000: (id) Không được để trống':
+                  value:
+                    errors:
+                      - resource: DeleteViTriReqDto
+                        field: id
+                        code: E1000
+                        message: Không được để trống
+                'E1004: (id) Giá trị phải là kiểu số':
+                  value:
+                    errors:
+                      - resource: DeleteViTriReqDto
+                        field: id
+                        code: E1004
+                        message: Giá trị phải là kiểu số
+                'E1002: (id) Giá trị phải lớn hơn hoặc bằng {value}':
+                  value:
+                    errors:
+                      - resource: DeleteViTriReqDto
+                        field: id
+                        code: E1002
+                        message: Giá trị phải lớn hơn hoặc bằng {value}
+        '401':
+          description: 'Error: Unauthorized'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedErrorTypeDto'
+        '403':
+          description: 'Error: Forbidden'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenErrorTypeDto'
+        '404':
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: *ref_4
+              examples:
+                ViTri không tìm thấy:
+                  value:
+                    errors:
+                      - resource: ViTri
+                        code: '404'
+                        message: Không tìm thấy
+        '500':
+          description: 'Error: Internal Server'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorTypeDto'
+      tags: *ref_1
+      security:
+        - bearer: []
+  /api/vi-tri/{id}/upload-hinh-anh:
+    put:
+      operationId: ViTriController_uploadHinhAnh
+      summary: API cập nhật vị trí hình ảnh
+      description: API cập nhật vị trí hình ảnh
+      parameters:
+        - name: id
+          required: true
+          in: query
+          description: Id number
+          example: 1
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UploadViTriHinhAnhReqDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadViTriHinhAnhResDto'
+        '400':
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: &ref_5
+                  errors:
+                    type: array
+                    items:
+                      properties:
+                        resource:
+                          type: string
+                        code:
+                          type: string
+                        message:
+                          type: string
+              examples:
+                'E1000: (id) Không được để trống':
+                  value:
+                    errors:
+                      - resource: DetailViTriReqDto
+                        field: id
+                        code: E1000
+                        message: Không được để trống
+                'E1004: (id) Giá trị phải là kiểu số':
+                  value:
+                    errors:
+                      - resource: DetailViTriReqDto
+                        field: id
+                        code: E1004
+                        message: Giá trị phải là kiểu số
+                'E1002: (id) Giá trị phải lớn hơn hoặc bằng {value}':
+                  value:
+                    errors:
+                      - resource: DetailViTriReqDto
+                        field: id
+                        code: E1002
+                        message: Giá trị phải lớn hơn hoặc bằng {value}
+                'E2001: Ảnh phải dưới hoặc bằng 5mb':
+                  value:
+                    errors:
+                      - code: E2001
+                        message: Ảnh phải dưới hoặc bằng 5mb
+                'E2002: Ảnh phải là jpg, jpeg hoặc png':
+                  value:
+                    errors:
+                      - code: E2002
+                        message: Ảnh phải là jpg, jpeg hoặc png
+        '401':
+          description: 'Error: Unauthorized'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedErrorTypeDto'
+        '403':
+          description: 'Error: Forbidden'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenErrorTypeDto'
+        '404':
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: *ref_5
+              examples:
+                ViTri không tìm thấy:
+                  value:
+                    errors:
+                      - resource: ViTri
+                        code: '404'
+                        message: Không tìm thấy
+        '500':
+          description: 'Error: Internal Server'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorTypeDto'
+      tags: *ref_1
+      security:
+        - bearer: []
 info:
   title: Air bnb
   description: Air bnb docs
@@ -210,13 +798,10 @@ components:
         birthday:
           format: date-time
           type: string
-          example: 2024-02-06T18:39:50.972Z
+          example: 2024-02-07T14:33:35.728Z
         gender:
           type: string
           example: gender
-        role:
-          type: string
-          example: role
       required:
         - name
         - email
@@ -224,7 +809,6 @@ components:
         - phone
         - birthday
         - gender
-        - role
     SignUpResDto:
       type: object
       properties:
@@ -242,7 +826,7 @@ components:
           example: '0354030301'
         birthday:
           type: string
-          example: 2024-02-06T18:39:51.003Z
+          example: 2024-02-07T14:33:35.768Z
         gender:
           type: string
           example: Male
@@ -290,3 +874,214 @@ components:
             eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
       required:
         - accessToken
+    CreateViTriReqDto:
+      type: object
+      properties:
+        tenViTri:
+          type: string
+          example: Tôn Đản
+        tinhThanh:
+          type: string
+          example: Đà Nẵng
+        quocGia:
+          type: string
+          example: Việt Nam
+        hinhAnh:
+          type: string
+          format: binary
+      required:
+        - tenViTri
+        - tinhThanh
+        - quocGia
+        - hinhAnh
+    CreateViTriResDto:
+      type: object
+      properties:
+        tenViTri:
+          type: string
+          example: Tôn Đản
+        tinhThanh:
+          type: string
+          example: Đà Nẵng
+        quocGia:
+          type: string
+          example: Việt Nam
+        hinhAnh:
+          type: string
+          example: data:image/png;base64,60c663d2ccd0381873d8d09bfe8329b0
+      required:
+        - tenViTri
+        - tinhThanh
+        - quocGia
+        - hinhAnh
+    UnauthorizedErrorTypeDto:
+      type: object
+      properties:
+        code:
+          type: number
+          example: 401
+        message:
+          type: string
+          example: Không được phép
+      required:
+        - code
+        - message
+    ForbiddenErrorTypeDto:
+      type: object
+      properties:
+        code:
+          type: number
+          example: 403
+        message:
+          type: string
+          example: Không có quyền hạn
+      required:
+        - code
+        - message
+    ViTriDto:
+      type: object
+      properties:
+        tenViTri:
+          type: string
+          example: Tôn Đản
+        tinhThanh:
+          type: string
+          example: Đà Nẵng
+        quocGia:
+          type: string
+          example: Việt Nam
+        hinhAnh:
+          type: string
+          example: data:image/png;base64,60c663d2ccd0381873d8d09bfe8329b0
+      required:
+        - tenViTri
+        - tinhThanh
+        - quocGia
+        - hinhAnh
+    PageMetaDto:
+      type: object
+      properties:
+        take:
+          type: number
+          default: 10
+          example: 10
+        total:
+          type: number
+          default: 100
+          example: 100
+        currentPage:
+          type: number
+          default: 1
+          example: 1
+      required:
+        - take
+        - total
+        - currentPage
+    ListViTriResDto:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ViTriDto'
+        meta:
+          $ref: '#/components/schemas/PageMetaDto'
+      required:
+        - data
+        - meta
+    DetailViTriResDto:
+      type: object
+      properties:
+        tenViTri:
+          type: string
+          example: Tôn Đản
+        tinhThanh:
+          type: string
+          example: Đà Nẵng
+        quocGia:
+          type: string
+          example: Việt Nam
+        hinhAnh:
+          type: string
+          example: data:image/png;base64,60c663d2ccd0381873d8d09bfe8329b0
+      required:
+        - tenViTri
+        - tinhThanh
+        - quocGia
+        - hinhAnh
+    UpdateViTriReqDto:
+      type: object
+      properties:
+        tenViTri:
+          type: string
+          example: Tôn Đản
+        tinhThanh:
+          type: string
+          example: Đà Nẵng
+        quocGia:
+          type: string
+          example: Việt Nam
+        hinhAnh:
+          type: string
+          format: binary
+      required:
+        - tenViTri
+        - tinhThanh
+        - quocGia
+        - hinhAnh
+    UpdateViTriResDto:
+      type: object
+      properties:
+        tenViTri:
+          type: string
+          example: Tôn Đản
+        tinhThanh:
+          type: string
+          example: Đà Nẵng
+        quocGia:
+          type: string
+          example: Việt Nam
+        hinhAnh:
+          type: string
+          example: data:image/png;base64,60c663d2ccd0381873d8d09bfe8329b0
+      required:
+        - tenViTri
+        - tinhThanh
+        - quocGia
+        - hinhAnh
+    UploadViTriHinhAnhReqDto:
+      type: object
+      properties:
+        hinhAnh:
+          type: string
+          format: binary
+      required:
+        - hinhAnh
+    UploadViTriHinhAnhResDto:
+      type: object
+      properties:
+        tenViTri:
+          type: string
+          example: Tôn Đản
+        tinhThanh:
+          type: string
+          example: Đà Nẵng
+        quocGia:
+          type: string
+          example: Việt Nam
+        hinhAnh:
+          type: string
+          example: data:image/png;base64,60c663d2ccd0381873d8d09bfe8329b0
+      required:
+        - tenViTri
+        - tinhThanh
+        - quocGia
+        - hinhAnh
+    DeleteViTriResDto:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 1
+      required:
+        - id

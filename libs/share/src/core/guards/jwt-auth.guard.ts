@@ -1,6 +1,6 @@
-import { ExecutionContext, Injectable } from "@nestjs/common";
+import { ExecutionContext, Injectable, UnauthorizedException } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
-import { setCurrentUser } from "../utils/auth.util";
+import { ClsServiceManager } from "nestjs-cls";
 
 @Injectable()
 export class JwtAuthGuard extends AuthGuard('jwt') {
@@ -9,7 +9,9 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
   }
 
   handleRequest(_err: any, user: any, _info: any, _ctx: ExecutionContext) {
-    setCurrentUser(user);
+    if (!user) throw new UnauthorizedException();
+
+    ClsServiceManager.getClsService()?.set('currentUser', user);
 
     return user;
   }

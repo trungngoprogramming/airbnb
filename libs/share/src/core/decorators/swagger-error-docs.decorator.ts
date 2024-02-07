@@ -9,8 +9,6 @@ type ExcludeError =
   | 'unauthorized'
   | 'forbidden'
   | 'internalServer'
-  | 'serviceUnavailable'
-  | 'queryFail';
 
 type Options = {
   exclude?: ExcludeError[];
@@ -91,13 +89,13 @@ export function ApiErrorDocs(options: Options) {
   if (options.notFoundTarget) {
     options.notFoundTarget.forEach((name) => {
       Object.assign(notFoundExamples, {
-        [`No ${name} found`]: {
+        [`${name} không tìm thấy`]: {
           value: {
             errors: [
               {
                 resource: name,
                 code: '404',
-                message: 'Resource not found',
+                message: Errors.Http[404],
               },
             ],
           },
@@ -106,18 +104,6 @@ export function ApiErrorDocs(options: Options) {
       })
     });
   }
-
-  const notFoundError = {
-    example: {
-      errors: [
-        {
-          resource: options.notFoundTarget,
-          code: '404',
-          message: 'Resource not found',
-        },
-      ],
-    },
-  };
 
   const properties = {
     errors: {
@@ -159,7 +145,7 @@ export function ApiErrorDocs(options: Options) {
             type: 'object',
             properties,
           },
-          ...notFoundError,
+          examples: { ...notFoundExamples },
         },
       },
     }),

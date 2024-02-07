@@ -9,7 +9,7 @@ import { plainToInstance } from "class-transformer";
 import { SignInResDto } from "./dtos/sign-in-res.dto";
 import { SignInReqDto } from "./dtos/sign-in-req.dto";
 
-@ApiTags('auth')
+@ApiTags('Auth')
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) { }

@@ -32,7 +32,7 @@ model Phong {
   maViTri   Int      @map("maViTri")
   tenPhong  String   @map("ten_phong") @db.VarChar(255)
   mota      String   @map("mo_ta") @db.VarChar(255)
-  hinhAnh   String   @map("hinh_anh") @db.VarChar(255)
+  hinhAnh   String   @map("hinh_anh") @db.Text
   khach     Int      @map("khach")
   phongNgu  Int      @map("phong_ngu")
   giuong    Int      @map("giuong")
@@ -52,15 +52,15 @@ model Phong {
 
   datPhong DatPhong[]
   binhLuan BinhLuan[]
-  viTri    ViTri      @relation(fields: [maViTri], references: [id])
+  viTri    ViTri      @relation(fields: [maViTri], references: [id], onDelete: Cascade)
 }
 
 model ViTri {
   id        Int      @id @default(autoincrement())
   tenViTri  String   @map("ten_vi_tri") @db.VarChar(255)
   tinhThanh String   @map("tinh_thanh") @db.VarChar(255)
-  hinhAnh   String   @map("hinh_anh") @db.VarChar(255)
-  quocGia   Int      @map("quoc_gia")
+  hinhAnh   String   @map("hinh_anh") @db.Text
+  quocGia   String   @map("quoc_gia") @db.VarChar(255)
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
 
@@ -77,8 +77,8 @@ model DatPhong {
   createdAt    DateTime @default(now()) @map("created_at")
   updatedAt    DateTime @default(now()) @updatedAt @map("updated_at")
 
-  phong    Phong     @relation(fields: [maPhong], references: [id])
-  nguoiDat NguoiDung @relation(fields: [maNguoiDat], references: [id])
+  phong    Phong     @relation(fields: [maPhong], references: [id], onDelete: Cascade)
+  nguoiDat NguoiDung @relation(fields: [maNguoiDat], references: [id], onDelete: Cascade)
 }
 
 model BinhLuan {
@@ -89,6 +89,6 @@ model BinhLuan {
   createdAt       DateTime @default(now()) @map("created_at")
   updatedAt       DateTime @default(now()) @updatedAt @map("updated_at")
 
-  phong         Phong     @relation(fields: [maPhong], references: [id])
-  nguoiBinhLuan NguoiDung @relation(fields: [maNguoiBinhLuan], references: [id])
+  phong         Phong     @relation(fields: [maPhong], references: [id], onDelete: Cascade)
+  nguoiBinhLuan NguoiDung @relation(fields: [maNguoiBinhLuan], references: [id], onDelete: Cascade)
 }

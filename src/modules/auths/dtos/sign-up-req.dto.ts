@@ -37,10 +37,4 @@ export class SignUpReqDto {
   @MaxLength(20)
   @IsNotEmpty()
   gender: string;
-
-  @ApiProperty({ example: 'role' })
-  @ApiPropertyError('IsNotEmpty', 'MaxLength')
-  @MaxLength(20)
-  @IsNotEmpty()
-  role: string;
 }
