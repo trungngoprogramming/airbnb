@@ -6,6 +6,7 @@ import { PassportModule } from '@nestjs/passport';
 import { ClsModule } from 'nestjs-cls';
 import { NguoiDungModule } from './modules/nguoi-dung/nguoi-dung.module';
 import { PhongModule } from './modules/phong/phong.module';
+import { BinhLuanModule } from './modules/binh-luan/binh-luan.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { PhongModule } from './modules/phong/phong.module';
     ViTriModule,
     NguoiDungModule,
     PhongModule,
+    BinhLuanModule,
   ],
 })
 export class AppModule { }

@@ -276,7 +276,7 @@ paths:
         - name: keyword
           required: false
           in: query
-          example: example search query
+          example: Can search tenViTri, tinhThanh, quocGia
           schema:
             type: string
       responses:
@@ -922,7 +922,7 @@ paths:
         - name: keyword
           required: false
           in: query
-          example: example search query
+          example: Can search name, email, phone
           schema:
             type: string
       responses:
@@ -1724,7 +1724,7 @@ paths:
         - name: keyword
           required: false
           in: query
-          example: example search query
+          example: Can search tenPhong, mota, maViTri
           schema:
             type: string
       responses:
@@ -2084,6 +2084,413 @@ paths:
       tags: *ref_11
       security:
         - bearer: []
+  /api/binh-luan:
+    post:
+      operationId: BinhLuanController_create
+      summary: API tạo bình luận
+      description: API tạo bình luận
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateBinhLuanReqDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateBinhLuanResDto'
+        '400':
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      properties:
+                        resource:
+                          type: string
+                        code:
+                          type: string
+                        message:
+                          type: string
+              examples:
+                'E1000: (maPhong) Không được để trống':
+                  value:
+                    errors:
+                      - resource: CreateBinhLuanReqDto
+                        field: maPhong
+                        code: E1000
+                        message: Không được để trống
+                'E1000: (maNguoiBinhLuan) Không được để trống':
+                  value:
+                    errors:
+                      - resource: CreateBinhLuanReqDto
+                        field: maNguoiBinhLuan
+                        code: E1000
+                        message: Không được để trống
+                'E1000: (saoBinhLuan) Không được để trống':
+                  value:
+                    errors:
+                      - resource: CreateBinhLuanReqDto
+                        field: saoBinhLuan
+                        code: E1000
+                        message: Không được để trống
+                'E1003: (saoBinhLuan) Giá trị phải nhỏ hơn hoặc bằng {valueNumber}':
+                  value:
+                    errors:
+                      - resource: CreateBinhLuanReqDto
+                        field: saoBinhLuan
+                        code: E1003
+                        message: Giá trị phải nhỏ hơn hoặc bằng {valueNumber}
+                'E1000: (noiDung) Không được để trống':
+                  value:
+                    errors:
+                      - resource: CreateBinhLuanReqDto
+                        field: noiDung
+                        code: E1000
+                        message: Không được để trống
+        '401':
+          description: 'Error: Unauthorized'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedErrorTypeDto'
+        '403':
+          description: 'Error: Forbidden'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenErrorTypeDto'
+        '500':
+          description: 'Error: Internal Server'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorTypeDto'
+      tags: &ref_15
+        - BinhLuan
+      security:
+        - bearer: []
+    get:
+      operationId: BinhLuanController_list
+      summary: API danh sách bình luận
+      description: API danh sách vị trí
+      parameters:
+        - name: page
+          required: false
+          in: query
+          description: Page number
+          example: 1
+          schema:
+            type: number
+        - name: take
+          required: false
+          in: query
+          description: Number record in one page
+          example: 10
+          schema:
+            type: number
+        - name: keyword
+          required: false
+          in: query
+          example: Can search saoBinhLuan, noiDung, maPhong, maNguoiBinhLuan
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListBinhLuanResDto'
+        '400':
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      properties:
+                        resource:
+                          type: string
+                        code:
+                          type: string
+                        message:
+                          type: string
+              examples:
+                'E1004: (page) Giá trị phải là kiểu số':
+                  value:
+                    errors:
+                      - resource: PageReqDto
+                        field: page
+                        code: E1004
+                        message: Giá trị phải là kiểu số
+                'E1003: (page) Giá trị phải nhỏ hơn hoặc bằng {valueNumber}':
+                  value:
+                    errors:
+                      - resource: PageReqDto
+                        field: page
+                        code: E1003
+                        message: Giá trị phải nhỏ hơn hoặc bằng {valueNumber}
+                'E1002: (page) Giá trị phải lớn hơn hoặc bằng {valueNumber}':
+                  value:
+                    errors:
+                      - resource: PageReqDto
+                        field: page
+                        code: E1002
+                        message: Giá trị phải lớn hơn hoặc bằng {valueNumber}
+                'E1004: (take) Giá trị phải là kiểu số':
+                  value:
+                    errors:
+                      - resource: PageReqDto
+                        field: take
+                        code: E1004
+                        message: Giá trị phải là kiểu số
+                'E1003: (take) Giá trị phải nhỏ hơn hoặc bằng {valueNumber}':
+                  value:
+                    errors:
+                      - resource: PageReqDto
+                        field: take
+                        code: E1003
+                        message: Giá trị phải nhỏ hơn hoặc bằng {valueNumber}
+                'E1002: (take) Giá trị phải lớn hơn hoặc bằng {valueNumber}':
+                  value:
+                    errors:
+                      - resource: PageReqDto
+                        field: take
+                        code: E1002
+                        message: Giá trị phải lớn hơn hoặc bằng {valueNumber}
+        '500':
+          description: 'Error: Internal Server'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorTypeDto'
+      tags: *ref_15
+  /api/binh-luan/{id}:
+    put:
+      operationId: BinhLuanController_update
+      summary: API cập nhật bình luận
+      description: API cập nhật bình luận
+      parameters:
+        - name: id
+          required: true
+          in: query
+          description: Id number
+          example: 1
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateBinhLuanReqDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateBinhLuanResDto'
+        '400':
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: &ref_16
+                  errors:
+                    type: array
+                    items:
+                      properties:
+                        resource:
+                          type: string
+                        code:
+                          type: string
+                        message:
+                          type: string
+              examples:
+                'E1000: (id) Không được để trống':
+                  value:
+                    errors:
+                      - resource: IdBinhLuanReqDto
+                        field: id
+                        code: E1000
+                        message: Không được để trống
+                'E1004: (id) Giá trị phải là kiểu số':
+                  value:
+                    errors:
+                      - resource: IdBinhLuanReqDto
+                        field: id
+                        code: E1004
+                        message: Giá trị phải là kiểu số
+                'E1002: (id) Giá trị phải lớn hơn hoặc bằng {valueNumber}':
+                  value:
+                    errors:
+                      - resource: IdBinhLuanReqDto
+                        field: id
+                        code: E1002
+                        message: Giá trị phải lớn hơn hoặc bằng {valueNumber}
+                'E1000: (saoBinhLuan) Không được để trống':
+                  value:
+                    errors:
+                      - resource: UpdateBinhLuanReqDto
+                        field: saoBinhLuan
+                        code: E1000
+                        message: Không được để trống
+                'E1003: (saoBinhLuan) Giá trị phải nhỏ hơn hoặc bằng {valueNumber}':
+                  value:
+                    errors:
+                      - resource: UpdateBinhLuanReqDto
+                        field: saoBinhLuan
+                        code: E1003
+                        message: Giá trị phải nhỏ hơn hoặc bằng {valueNumber}
+                'E1000: (noiDung) Không được để trống':
+                  value:
+                    errors:
+                      - resource: UpdateBinhLuanReqDto
+                        field: noiDung
+                        code: E1000
+                        message: Không được để trống
+        '401':
+          description: 'Error: Unauthorized'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedErrorTypeDto'
+        '403':
+          description: 'Error: Forbidden'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenErrorTypeDto'
+        '404':
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: *ref_16
+              examples:
+                ViTri không tìm thấy:
+                  value:
+                    errors:
+                      - resource: ViTri
+                        code: '404'
+                        message: Không tìm thấy
+        '500':
+          description: 'Error: Internal Server'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorTypeDto'
+      tags: *ref_15
+      security:
+        - bearer: []
+    delete:
+      operationId: BinhLuanController_delete
+      summary: API xoá bình luận
+      description: API xoá bình luận
+      parameters:
+        - name: id
+          required: true
+          in: query
+          description: Id number
+          example: 1
+          schema:
+            type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteBinhLuanResDto'
+        '400':
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: &ref_17
+                  errors:
+                    type: array
+                    items:
+                      properties:
+                        resource:
+                          type: string
+                        code:
+                          type: string
+                        message:
+                          type: string
+              examples:
+                'E1000: (id) Không được để trống':
+                  value:
+                    errors:
+                      - resource: DeleteBinhLuanReqDto
+                        field: id
+                        code: E1000
+                        message: Không được để trống
+                'E1004: (id) Giá trị phải là kiểu số':
+                  value:
+                    errors:
+                      - resource: DeleteBinhLuanReqDto
+                        field: id
+                        code: E1004
+                        message: Giá trị phải là kiểu số
+                'E1002: (id) Giá trị phải lớn hơn hoặc bằng {valueNumber}':
+                  value:
+                    errors:
+                      - resource: DeleteBinhLuanReqDto
+                        field: id
+                        code: E1002
+                        message: Giá trị phải lớn hơn hoặc bằng {valueNumber}
+        '401':
+          description: 'Error: Unauthorized'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedErrorTypeDto'
+        '403':
+          description: 'Error: Forbidden'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenErrorTypeDto'
+        '404':
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: *ref_17
+              examples:
+                ViTri không tìm thấy:
+                  value:
+                    errors:
+                      - resource: ViTri
+                        code: '404'
+                        message: Không tìm thấy
+        '500':
+          description: 'Error: Internal Server'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorTypeDto'
+      tags: *ref_15
+      security:
+        - bearer: []
 info:
   title: Air bnb
   description: Air bnb docs
@@ -2116,7 +2523,7 @@ components:
         birthday:
           format: date-time
           type: string
-          example: 2024-02-07T18:47:13.042Z
+          example: 2024-02-08T00:39:57.401Z
         gender:
           type: string
           example: gender
@@ -2144,7 +2551,7 @@ components:
           example: '0354030301'
         birthday:
           type: string
-          example: 2024-02-07T18:47:13.076Z
+          example: 2024-02-08T00:39:57.446Z
         gender:
           type: string
           example: Male
@@ -2421,7 +2828,7 @@ components:
         birthday:
           format: date-time
           type: string
-          example: 2024-02-07T18:47:13.146Z
+          example: 2024-02-08T00:39:57.545Z
         gender:
           type: string
           example: gender
@@ -2456,7 +2863,7 @@ components:
           example: '0354030301'
         birthday:
           type: string
-          example: 2024-02-07T18:47:13.146Z
+          example: 2024-02-08T00:39:57.545Z
         gender:
           type: string
           example: Male
@@ -2488,7 +2895,7 @@ components:
           example: '0354030301'
         birthday:
           type: string
-          example: 2024-02-07T18:47:13.147Z
+          example: 2024-02-08T00:39:57.546Z
         gender:
           type: string
           example: Male
@@ -2532,7 +2939,7 @@ components:
           example: '0354030301'
         birthday:
           type: string
-          example: 2024-02-07T18:47:13.147Z
+          example: 2024-02-08T00:39:57.546Z
         gender:
           type: string
           example: Male
@@ -2565,7 +2972,7 @@ components:
         birthday:
           format: date-time
           type: string
-          example: 2024-02-07T18:47:13.148Z
+          example: 2024-02-08T00:39:57.547Z
         gender:
           type: string
           example: gender
@@ -2600,7 +3007,7 @@ components:
           example: '0354030301'
         birthday:
           type: string
-          example: 2024-02-07T18:47:13.148Z
+          example: 2024-02-08T00:39:57.547Z
         gender:
           type: string
           example: Male
@@ -2640,7 +3047,7 @@ components:
           example: '0354030301'
         birthday:
           type: string
-          example: 2024-02-07T18:47:13.149Z
+          example: 2024-02-08T00:39:57.548Z
         gender:
           type: string
           example: Male
@@ -3064,6 +3471,118 @@ components:
         - banUi
         - hinhAnh
     DeletePhongResDto:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 1
+      required:
+        - id
+    CreateBinhLuanReqDto:
+      type: object
+      properties:
+        maPhong:
+          type: number
+          example: 1
+        maNguoiBinhLuan:
+          type: number
+          example: 1
+        saoBinhLuan:
+          type: number
+          example: 1
+        noiDung:
+          type: string
+          example: Xanh, Sạch, Đẹp
+      required:
+        - maPhong
+        - maNguoiBinhLuan
+        - saoBinhLuan
+        - noiDung
+    CreateBinhLuanResDto:
+      type: object
+      properties:
+        maPhong:
+          type: number
+          example: 1
+        maNguoiBinhLuan:
+          type: number
+          example: 1
+        saoBinhLuan:
+          type: number
+          example: 1
+        noiDung:
+          type: string
+          example: Xanh, Sạch, Đẹp
+      required:
+        - maPhong
+        - maNguoiBinhLuan
+        - saoBinhLuan
+        - noiDung
+    BinhLuanDto:
+      type: object
+      properties:
+        maPhong:
+          type: number
+          example: 1
+        maNguoiBinhLuan:
+          type: number
+          example: 1
+        saoBinhLuan:
+          type: number
+          example: 1
+        noiDung:
+          type: string
+          example: Xanh, Sạch, Đẹp
+      required:
+        - maPhong
+        - maNguoiBinhLuan
+        - saoBinhLuan
+        - noiDung
+    ListBinhLuanResDto:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BinhLuanDto'
+        meta:
+          $ref: '#/components/schemas/PageMetaDto'
+      required:
+        - data
+        - meta
+    UpdateBinhLuanReqDto:
+      type: object
+      properties:
+        saoBinhLuan:
+          type: number
+          example: 1
+        noiDung:
+          type: string
+          example: Xanh, Sạch, Đẹp
+      required:
+        - saoBinhLuan
+        - noiDung
+    UpdateBinhLuanResDto:
+      type: object
+      properties:
+        maPhong:
+          type: number
+          example: 1
+        maNguoiBinhLuan:
+          type: number
+          example: 1
+        saoBinhLuan:
+          type: number
+          example: 1
+        noiDung:
+          type: string
+          example: Xanh, Sạch, Đẹp
+      required:
+        - maPhong
+        - maNguoiBinhLuan
+        - saoBinhLuan
+        - noiDung
+    DeleteBinhLuanResDto:
       type: object
       properties:
         id:

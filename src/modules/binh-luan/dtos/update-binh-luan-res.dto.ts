@@ -1,7 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { Expose } from "class-transformer";
 
-export class CreateBinhLuanResDto {
+export class UpdateBinhLuanResDto {
   @Expose()
   @ApiProperty({ example: 1 })
   maPhong: number;

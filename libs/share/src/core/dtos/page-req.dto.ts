@@ -30,12 +30,4 @@ export class PageReqDto {
   @IsNumber()
   @IsOptional()
   readonly take: number;
-
-  @ApiProperty({
-    example: 'example search query',
-    type: 'string',
-    required: false,
-  })
-  @IsOptional()
-  readonly keyword: string;
 }

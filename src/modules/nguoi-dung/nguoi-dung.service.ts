@@ -2,7 +2,7 @@ import { BadRequestException, Injectable } from "@nestjs/common";
 import { CreateNguoiDungReqDto } from "./dtos/create-nguoi-dung-req.dto";
 import { PrismaService } from "prisma/prisma.service";
 import { Errors } from "libs/share/src/core/constants/error.constant";
-import { ListNguoiDungReqDto } from "./dtos/list-vi-tri-req.dto";
+import { ListNguoiDungReqDto } from "./dtos/list-nguoi-dung-req.dto";
 import { Prisma } from "@prisma/client";
 import { paginate } from "libs/share/src/core/utils/paginate.util";
 import { UpdateNguoiDungReqDto } from "./dtos/update-nguoi-dung-req.dto";
