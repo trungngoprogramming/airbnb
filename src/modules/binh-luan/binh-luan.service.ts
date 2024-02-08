@@ -6,6 +6,7 @@ import { ListBinhLuanReqDto } from "./dtos/list-binh-luan-req.dto";
 import { paginate } from "libs/share/src/core/utils/paginate.util";
 import { UpdateBinhLuanReqDto } from "./dtos/update-binh-luan-req.dto";
 import { getCurrentUser } from "libs/share/src/core/utils/auth.util";
+import { isEmpty, isNaN } from "lodash";
 
 @Injectable()
 export class BinhLuanService {
@@ -21,14 +22,22 @@ export class BinhLuanService {
 
   async list({ take, page, keyword }: ListBinhLuanReqDto) {
     const args: Prisma.BinhLuanFindManyArgs = {};
+
     if (keyword) args.where = {
       OR: [
-        { saoBinhLuan: Number(keyword) },
         { noiDung: { contains: keyword } },
-        { maPhong: Number(keyword) },
-        { maNguoiBinhLuan: Number(keyword) },
       ]
     }
+
+    if (!isNaN(Number(keyword))) {
+      args.where['OR'].push(
+        { saoBinhLuan: Number(keyword) },
+        { maPhong: Number(keyword) },
+        { maNguoiBinhLuan: Number(keyword) }
+      );
+    }
+
+    if (keyword && isEmpty(args.where)) args.where = { id: 0 }
 
     return await paginate(this.prisma.binhLuan, args, page, take);
   }

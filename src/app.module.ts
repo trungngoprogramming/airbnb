@@ -7,6 +7,7 @@ import { ClsModule } from 'nestjs-cls';
 import { NguoiDungModule } from './modules/nguoi-dung/nguoi-dung.module';
 import { PhongModule } from './modules/phong/phong.module';
 import { BinhLuanModule } from './modules/binh-luan/binh-luan.module';
+import { DatPhongModule } from './modules/dat-phong/dat-phong.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { BinhLuanModule } from './modules/binh-luan/binh-luan.module';
     NguoiDungModule,
     PhongModule,
     BinhLuanModule,
+    DatPhongModule,
   ],
 })
 export class AppModule { }

@@ -34,6 +34,10 @@ export const Errors = {
       code: 'E1006',
       message: 'Giá trị phải là kiểu boolean'
     },
+    isDate: {
+      code: 'E1007',
+      message: 'Giá trị phải là kiểu DateTime'
+    },
     accountExisted: {
       code: 'E2000',
       message: 'Tài khoản đã tồn tại'

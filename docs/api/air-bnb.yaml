@@ -2491,6 +2491,536 @@ paths:
       tags: *ref_15
       security:
         - bearer: []
+  /api/dat-phong:
+    post:
+      operationId: DatPhongController_create
+      summary: API đặt phòng
+      description: API đặt phòng
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDatPhongReqDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateDatPhongResDto'
+        '400':
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      properties:
+                        resource:
+                          type: string
+                        code:
+                          type: string
+                        message:
+                          type: string
+              examples:
+                'E1000: (maPhong) Không được để trống':
+                  value:
+                    errors:
+                      - resource: CreateDatPhongReqDto
+                        field: maPhong
+                        code: E1000
+                        message: Không được để trống
+                'E1000: (maNguoiDat) Không được để trống':
+                  value:
+                    errors:
+                      - resource: CreateDatPhongReqDto
+                        field: maNguoiDat
+                        code: E1000
+                        message: Không được để trống
+                'E1000: (soLuongKhach) Không được để trống':
+                  value:
+                    errors:
+                      - resource: CreateDatPhongReqDto
+                        field: soLuongKhach
+                        code: E1000
+                        message: Không được để trống
+                'E1003: (soLuongKhach) Giá trị phải nhỏ hơn hoặc bằng {valueNumber}':
+                  value:
+                    errors:
+                      - resource: CreateDatPhongReqDto
+                        field: soLuongKhach
+                        code: E1003
+                        message: Giá trị phải nhỏ hơn hoặc bằng {valueNumber}
+                'E1000: (ngayDen) Không được để trống':
+                  value:
+                    errors:
+                      - resource: CreateDatPhongReqDto
+                        field: ngayDen
+                        code: E1000
+                        message: Không được để trống
+                'E1000: (ngayDi) Không được để trống':
+                  value:
+                    errors:
+                      - resource: CreateDatPhongReqDto
+                        field: ngayDi
+                        code: E1000
+                        message: Không được để trống
+        '401':
+          description: 'Error: Unauthorized'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedErrorTypeDto'
+        '403':
+          description: 'Error: Forbidden'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenErrorTypeDto'
+        '500':
+          description: 'Error: Internal Server'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorTypeDto'
+      tags: &ref_18
+        - DatPhong
+      security:
+        - bearer: []
+    get:
+      operationId: DatPhongController_list
+      summary: API danh sách đặt phòng
+      description: API danh sách đặt phòng
+      parameters:
+        - name: page
+          required: false
+          in: query
+          description: Page number
+          example: 1
+          schema:
+            type: number
+        - name: take
+          required: false
+          in: query
+          description: Number record in one page
+          example: 10
+          schema:
+            type: number
+        - name: keyword
+          required: false
+          in: query
+          example: Can search maPhong, maNguoiDat
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListDatPhongResDto'
+        '400':
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      properties:
+                        resource:
+                          type: string
+                        code:
+                          type: string
+                        message:
+                          type: string
+              examples:
+                'E1004: (page) Giá trị phải là kiểu số':
+                  value:
+                    errors:
+                      - resource: PageReqDto
+                        field: page
+                        code: E1004
+                        message: Giá trị phải là kiểu số
+                'E1003: (page) Giá trị phải nhỏ hơn hoặc bằng {valueNumber}':
+                  value:
+                    errors:
+                      - resource: PageReqDto
+                        field: page
+                        code: E1003
+                        message: Giá trị phải nhỏ hơn hoặc bằng {valueNumber}
+                'E1002: (page) Giá trị phải lớn hơn hoặc bằng {valueNumber}':
+                  value:
+                    errors:
+                      - resource: PageReqDto
+                        field: page
+                        code: E1002
+                        message: Giá trị phải lớn hơn hoặc bằng {valueNumber}
+                'E1004: (take) Giá trị phải là kiểu số':
+                  value:
+                    errors:
+                      - resource: PageReqDto
+                        field: take
+                        code: E1004
+                        message: Giá trị phải là kiểu số
+                'E1003: (take) Giá trị phải nhỏ hơn hoặc bằng {valueNumber}':
+                  value:
+                    errors:
+                      - resource: PageReqDto
+                        field: take
+                        code: E1003
+                        message: Giá trị phải nhỏ hơn hoặc bằng {valueNumber}
+                'E1002: (take) Giá trị phải lớn hơn hoặc bằng {valueNumber}':
+                  value:
+                    errors:
+                      - resource: PageReqDto
+                        field: take
+                        code: E1002
+                        message: Giá trị phải lớn hơn hoặc bằng {valueNumber}
+        '401':
+          description: 'Error: Unauthorized'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedErrorTypeDto'
+        '403':
+          description: 'Error: Forbidden'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenErrorTypeDto'
+        '500':
+          description: 'Error: Internal Server'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorTypeDto'
+      tags: *ref_18
+      security:
+        - bearer: []
+  /api/dat-phong/{id}:
+    get:
+      operationId: DatPhongController_detail
+      summary: API chi tiết đặt phòng
+      description: API chi tiết đặt phòng
+      parameters:
+        - name: id
+          required: true
+          in: query
+          description: Id number
+          example: 1
+          schema:
+            type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DetailDatPhongResDto'
+        '400':
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: &ref_19
+                  errors:
+                    type: array
+                    items:
+                      properties:
+                        resource:
+                          type: string
+                        code:
+                          type: string
+                        message:
+                          type: string
+              examples:
+                'E1000: (id) Không được để trống':
+                  value:
+                    errors:
+                      - resource: DetailDatPhongReqDto
+                        field: id
+                        code: E1000
+                        message: Không được để trống
+                'E1004: (id) Giá trị phải là kiểu số':
+                  value:
+                    errors:
+                      - resource: DetailDatPhongReqDto
+                        field: id
+                        code: E1004
+                        message: Giá trị phải là kiểu số
+                'E1002: (id) Giá trị phải lớn hơn hoặc bằng {valueNumber}':
+                  value:
+                    errors:
+                      - resource: DetailDatPhongReqDto
+                        field: id
+                        code: E1002
+                        message: Giá trị phải lớn hơn hoặc bằng {valueNumber}
+        '404':
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: *ref_19
+              examples:
+                DatPhong không tìm thấy:
+                  value:
+                    errors:
+                      - resource: DatPhong
+                        code: '404'
+                        message: Không tìm thấy
+        '500':
+          description: 'Error: Internal Server'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorTypeDto'
+      tags: *ref_18
+      security:
+        - bearer: []
+    put:
+      operationId: DatPhongController_update
+      summary: API cập nhật đặt phòng
+      description: API cập nhật đặt phòng
+      parameters:
+        - name: id
+          required: true
+          in: query
+          description: Id number
+          example: 1
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateDatPhongReqDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateDatPhongResDto'
+        '400':
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: &ref_20
+                  errors:
+                    type: array
+                    items:
+                      properties:
+                        resource:
+                          type: string
+                        code:
+                          type: string
+                        message:
+                          type: string
+              examples:
+                'E1000: (id) Không được để trống':
+                  value:
+                    errors:
+                      - resource: DetailDatPhongReqDto
+                        field: id
+                        code: E1000
+                        message: Không được để trống
+                'E1004: (id) Giá trị phải là kiểu số':
+                  value:
+                    errors:
+                      - resource: DetailDatPhongReqDto
+                        field: id
+                        code: E1004
+                        message: Giá trị phải là kiểu số
+                'E1002: (id) Giá trị phải lớn hơn hoặc bằng {valueNumber}':
+                  value:
+                    errors:
+                      - resource: DetailDatPhongReqDto
+                        field: id
+                        code: E1002
+                        message: Giá trị phải lớn hơn hoặc bằng {valueNumber}
+                'E1000: (maPhong) Không được để trống':
+                  value:
+                    errors:
+                      - resource: UpdateDatPhongReqDto
+                        field: maPhong
+                        code: E1000
+                        message: Không được để trống
+                'E1000: (maNguoiDat) Không được để trống':
+                  value:
+                    errors:
+                      - resource: UpdateDatPhongReqDto
+                        field: maNguoiDat
+                        code: E1000
+                        message: Không được để trống
+                'E1000: (soLuongKhach) Không được để trống':
+                  value:
+                    errors:
+                      - resource: UpdateDatPhongReqDto
+                        field: soLuongKhach
+                        code: E1000
+                        message: Không được để trống
+                'E1003: (soLuongKhach) Giá trị phải nhỏ hơn hoặc bằng {valueNumber}':
+                  value:
+                    errors:
+                      - resource: UpdateDatPhongReqDto
+                        field: soLuongKhach
+                        code: E1003
+                        message: Giá trị phải nhỏ hơn hoặc bằng {valueNumber}
+                'E1000: (ngayDen) Không được để trống':
+                  value:
+                    errors:
+                      - resource: UpdateDatPhongReqDto
+                        field: ngayDen
+                        code: E1000
+                        message: Không được để trống
+                'E1000: (ngayDi) Không được để trống':
+                  value:
+                    errors:
+                      - resource: UpdateDatPhongReqDto
+                        field: ngayDi
+                        code: E1000
+                        message: Không được để trống
+        '401':
+          description: 'Error: Unauthorized'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedErrorTypeDto'
+        '403':
+          description: 'Error: Forbidden'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenErrorTypeDto'
+        '404':
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: *ref_20
+              examples:
+                DatPhong không tìm thấy:
+                  value:
+                    errors:
+                      - resource: DatPhong
+                        code: '404'
+                        message: Không tìm thấy
+        '500':
+          description: 'Error: Internal Server'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorTypeDto'
+      tags: *ref_18
+      security:
+        - bearer: []
+    delete:
+      operationId: DatPhongController_delete
+      summary: API xoá đặt phòng
+      description: API xoá đặt phòng
+      parameters:
+        - name: id
+          required: true
+          in: query
+          description: Id number
+          example: 1
+          schema:
+            type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteDatPhongResDto'
+        '400':
+          description: 'Error: Bad Request'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: &ref_21
+                  errors:
+                    type: array
+                    items:
+                      properties:
+                        resource:
+                          type: string
+                        code:
+                          type: string
+                        message:
+                          type: string
+              examples:
+                'E1000: (id) Không được để trống':
+                  value:
+                    errors:
+                      - resource: DeleteDatPhongReqDto
+                        field: id
+                        code: E1000
+                        message: Không được để trống
+                'E1004: (id) Giá trị phải là kiểu số':
+                  value:
+                    errors:
+                      - resource: DeleteDatPhongReqDto
+                        field: id
+                        code: E1004
+                        message: Giá trị phải là kiểu số
+                'E1002: (id) Giá trị phải lớn hơn hoặc bằng {valueNumber}':
+                  value:
+                    errors:
+                      - resource: DeleteDatPhongReqDto
+                        field: id
+                        code: E1002
+                        message: Giá trị phải lớn hơn hoặc bằng {valueNumber}
+        '401':
+          description: 'Error: Unauthorized'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedErrorTypeDto'
+        '403':
+          description: 'Error: Forbidden'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForbiddenErrorTypeDto'
+        '404':
+          description: 'Error: Not Found'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: *ref_21
+              examples:
+                ViTri không tìm thấy:
+                  value:
+                    errors:
+                      - resource: ViTri
+                        code: '404'
+                        message: Không tìm thấy
+        '500':
+          description: 'Error: Internal Server'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerErrorTypeDto'
+      tags: *ref_18
+      security:
+        - bearer: []
 info:
   title: Air bnb
   description: Air bnb docs
@@ -2523,7 +3053,7 @@ components:
         birthday:
           format: date-time
           type: string
-          example: 2024-02-08T00:39:57.401Z
+          example: 2024-02-08T02:51:50.547Z
         gender:
           type: string
           example: gender
@@ -2551,7 +3081,7 @@ components:
           example: '0354030301'
         birthday:
           type: string
-          example: 2024-02-08T00:39:57.446Z
+          example: 2024-02-08T02:51:50.594Z
         gender:
           type: string
           example: Male
@@ -2828,7 +3358,7 @@ components:
         birthday:
           format: date-time
           type: string
-          example: 2024-02-08T00:39:57.545Z
+          example: 2024-02-08T02:51:50.693Z
         gender:
           type: string
           example: gender
@@ -2863,7 +3393,7 @@ components:
           example: '0354030301'
         birthday:
           type: string
-          example: 2024-02-08T00:39:57.545Z
+          example: 2024-02-08T02:51:50.694Z
         gender:
           type: string
           example: Male
@@ -2895,7 +3425,7 @@ components:
           example: '0354030301'
         birthday:
           type: string
-          example: 2024-02-08T00:39:57.546Z
+          example: 2024-02-08T02:51:50.694Z
         gender:
           type: string
           example: Male
@@ -2939,7 +3469,7 @@ components:
           example: '0354030301'
         birthday:
           type: string
-          example: 2024-02-08T00:39:57.546Z
+          example: 2024-02-08T02:51:50.695Z
         gender:
           type: string
           example: Male
@@ -2972,7 +3502,7 @@ components:
         birthday:
           format: date-time
           type: string
-          example: 2024-02-08T00:39:57.547Z
+          example: 2024-02-08T02:51:50.696Z
         gender:
           type: string
           example: gender
@@ -3007,7 +3537,7 @@ components:
           example: '0354030301'
         birthday:
           type: string
-          example: 2024-02-08T00:39:57.547Z
+          example: 2024-02-08T02:51:50.695Z
         gender:
           type: string
           example: Male
@@ -3047,7 +3577,7 @@ components:
           example: '0354030301'
         birthday:
           type: string
-          example: 2024-02-08T00:39:57.548Z
+          example: 2024-02-08T02:51:50.697Z
         gender:
           type: string
           example: Male
@@ -3583,6 +4113,178 @@ components:
         - saoBinhLuan
         - noiDung
     DeleteBinhLuanResDto:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 1
+      required:
+        - id
+    CreateDatPhongReqDto:
+      type: object
+      properties:
+        maPhong:
+          type: number
+          example: 1
+        maNguoiDat:
+          type: number
+          example: >-
+            //kiểu số, bắt buộc phải truyền nếu là admin, tự động ghi đè nếu là
+            user, nên chỉ cần truyền null
+        soLuongKhach:
+          type: number
+          example: 1
+        ngayDen:
+          type: string
+          example: 2024-02-08T02:51:50.712Z
+        ngayDi:
+          type: string
+          example: 2024-02-08T02:51:50.712Z
+      required:
+        - maPhong
+        - maNguoiDat
+        - soLuongKhach
+        - ngayDen
+        - ngayDi
+    CreateDatPhongResDto:
+      type: object
+      properties:
+        maPhong:
+          type: number
+          example: 1
+        maNguoiDat:
+          type: number
+          example: 1
+        soLuongKhach:
+          type: number
+          example: 1
+        ngayDen:
+          type: string
+          example: 2024-02-08T02:51:50.712Z
+        ngayDi:
+          type: string
+          example: 2024-02-08T02:51:50.712Z
+      required:
+        - maPhong
+        - maNguoiDat
+        - soLuongKhach
+        - ngayDen
+        - ngayDi
+    DatPhongDto:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 1
+        maPhong:
+          type: number
+          example: 1
+        maNguoiDat:
+          type: number
+          example: 1
+        soLuongKhach:
+          type: number
+          example: 1
+        ngayDen:
+          type: string
+          example: 2024-02-08T02:51:50.712Z
+        ngayDi:
+          type: string
+          example: 2024-02-08T02:51:50.712Z
+      required:
+        - id
+        - maPhong
+        - maNguoiDat
+        - soLuongKhach
+        - ngayDen
+        - ngayDi
+    ListDatPhongResDto:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/DatPhongDto'
+        meta:
+          $ref: '#/components/schemas/PageMetaDto'
+      required:
+        - data
+        - meta
+    DetailDatPhongResDto:
+      type: object
+      properties:
+        maPhong:
+          type: number
+          example: 1
+        maNguoiDat:
+          type: number
+          example: 1
+        soLuongKhach:
+          type: number
+          example: 1
+        ngayDen:
+          type: string
+          example: 2024-02-08T02:51:50.713Z
+        ngayDi:
+          type: string
+          example: 2024-02-08T02:51:50.713Z
+      required:
+        - maPhong
+        - maNguoiDat
+        - soLuongKhach
+        - ngayDen
+        - ngayDi
+    UpdateDatPhongReqDto:
+      type: object
+      properties:
+        maPhong:
+          type: number
+          example: 1
+        maNguoiDat:
+          type: number
+          example: >-
+            //kiểu số, bắt buộc phải truyền nếu là admin, tự động ghi đè nếu là
+            user, nên chỉ cần truyền null
+        soLuongKhach:
+          type: number
+          example: 1
+        ngayDen:
+          type: string
+          example: 2024-02-08T02:51:50.714Z
+        ngayDi:
+          type: string
+          example: 2024-02-08T02:51:50.714Z
+      required:
+        - maPhong
+        - maNguoiDat
+        - soLuongKhach
+        - ngayDen
+        - ngayDi
+    UpdateDatPhongResDto:
+      type: object
+      properties:
+        maPhong:
+          type: number
+          example: 1
+        maNguoiDat:
+          type: number
+          example: 1
+        soLuongKhach:
+          type: number
+          example: 1
+        ngayDen:
+          type: string
+          example: 2024-02-08T02:51:50.714Z
+        ngayDi:
+          type: string
+          example: 2024-02-08T02:51:50.714Z
+      required:
+        - maPhong
+        - maNguoiDat
+        - soLuongKhach
+        - ngayDen
+        - ngayDi
+    DeleteDatPhongResDto:
       type: object
       properties:
         id:

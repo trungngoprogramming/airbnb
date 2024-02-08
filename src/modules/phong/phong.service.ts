@@ -5,6 +5,7 @@ import { ListPhongReqDto } from "./dtos/list-phong-req.dto";
 import { Prisma } from "@prisma/client";
 import { paginate } from "libs/share/src/core/utils/paginate.util";
 import { UploadViTriHinhAnhReqDto } from "../vi-tri/dtos/upload-vi-tri-hinh-anh-req.dto";
+import { isEmpty } from "lodash";
 
 @Injectable()
 export class PhongService {
@@ -25,9 +26,16 @@ export class PhongService {
       OR: [
         { tenPhong: { contains: keyword } },
         { mota: { contains: keyword } },
-        { maViTri: Number(keyword) },
       ]
     }
+
+    if (!isNaN(Number(keyword))) {
+      args.where['OR'].push(
+        { maViTri: Number(keyword) },
+      );
+    }
+
+    if (keyword && isEmpty(args.where)) args.where = { id: 0 }
 
     return await paginate(this.prisma.phong, args, page, take);
   }
