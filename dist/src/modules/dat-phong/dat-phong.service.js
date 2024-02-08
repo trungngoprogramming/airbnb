@@ -26,9 +26,12 @@ let DatPhongService = class DatPhongService {
         });
     }
     async list({ take, page, keyword }) {
-        const args = { where: { OR: [] } };
+        const args = { where: {} };
         if (!(0, lodash_1.isNaN)(Number(keyword))) {
-            args.where['OR'].push({ maPhong: Number(keyword) }, { maNguoiDat: Number(keyword) });
+            args.where['OR'] = [
+                { maPhong: Number(keyword) },
+                { maNguoiDat: Number(keyword) }
+            ];
         }
         if (keyword && !args.where.OR.length)
             args.where = { id: 0 };
@@ -45,7 +48,8 @@ let DatPhongService = class DatPhongService {
     }
     async update(id, updateDatPhongReqDto) {
         await this.detail(id);
-        return await this.prisma.viTri.update({ where: { id }, data: updateDatPhongReqDto });
+        await this.prisma.nguoiDung.findFirstOrThrow({ where: { id: updateDatPhongReqDto.maNguoiDat } });
+        return await this.prisma.datPhong.update({ where: { id }, data: updateDatPhongReqDto });
     }
     async delete(id) {
         await this.detail(id);

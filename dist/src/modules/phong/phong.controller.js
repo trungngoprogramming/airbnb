@@ -65,8 +65,8 @@ __decorate([
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard, new role_guard_1.RoleGuard(['admin'])),
     (0, swagger_1.ApiBearerAuth)(),
     (0, swagger_1.ApiOperation)({
-        summary: 'API tạo vị trí',
-        description: 'API tạo vị trí',
+        summary: 'API tạo phòng',
+        description: 'API tạo phòng',
     }),
     (0, swagger_1.ApiCreatedResponse)({ type: create_phong_res_dto_1.CreatePhongResDto }),
     (0, swagger_1.ApiConsumes)('multipart/form-data'),

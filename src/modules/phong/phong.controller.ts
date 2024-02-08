@@ -28,8 +28,8 @@ export class PhongController {
   @UseGuards(JwtAuthGuard, new RoleGuard(['admin']))
   @ApiBearerAuth()
   @ApiOperation({
-    summary: 'API tạo vị trí',
-    description: 'API tạo vị trí',
+    summary: 'API tạo phòng',
+    description: 'API tạo phòng',
   })
   @ApiCreatedResponse({ type: CreatePhongResDto })
   @ApiConsumes('multipart/form-data')

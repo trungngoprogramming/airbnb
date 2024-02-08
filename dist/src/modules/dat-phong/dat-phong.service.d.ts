@@ -35,10 +35,11 @@ export declare class DatPhongService {
     }>;
     update(id: number, updateDatPhongReqDto: UpdateDatPhongReqDto): Promise<{
         id: number;
-        tenViTri: string;
-        tinhThanh: string;
-        hinhAnh: string;
-        quocGia: string;
+        maPhong: number;
+        maNguoiDat: number;
+        ngayDen: Date;
+        ngayDi: Date;
+        soLuongKhach: number;
         createdAt: Date;
         updatedAt: Date;
     }>;
