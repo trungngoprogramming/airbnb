@@ -10,8 +10,6 @@ const bad_request_exception_filter_1 = require("../libs/share/src/core/filters/b
 const query_failed_exception_filter_1 = require("../libs/share/src/core/filters/query-failed-exception.filter");
 const page_not_found_exception_filter_1 = require("../libs/share/src/core/filters/page-not-found-exception.filter");
 const swagger_1 = require("@nestjs/swagger");
-const fs_1 = require("fs");
-const js_yaml_1 = require("js-yaml");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     app.setGlobalPrefix('/api');
@@ -28,7 +26,6 @@ async function bootstrap() {
         .addBearerAuth({ type: 'http', scheme: 'bearer', bearerFormat: 'JWT' })
         .build();
     const doc = swagger_1.SwaggerModule.createDocument(app, conf);
-    (0, fs_1.writeFileSync)('./docs/api/air-bnb.yaml', (0, js_yaml_1.dump)(doc, {}));
     swagger_1.SwaggerModule.setup('docs', app, doc);
     await app.listen(3000);
 }

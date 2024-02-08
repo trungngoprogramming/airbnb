@@ -39,7 +39,7 @@ async function bootstrap() {
     .addBearerAuth({ type: 'http', scheme: 'bearer', bearerFormat: 'JWT' })
     .build();
   const doc = SwaggerModule.createDocument(app, conf);
-  writeFileSync('./docs/api/air-bnb.yaml', dump(doc, {}));
+  // writeFileSync('./docs/api/air-bnb.yaml', dump(doc, {}));
   SwaggerModule.setup('docs', app, doc);
 
   await app.listen(3000);
